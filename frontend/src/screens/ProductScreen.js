@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import axios from "axios";
-
+import './ProductScreen.scss'
 
 const ProductScreen = ({}) => {
 
@@ -33,7 +33,7 @@ const ProductScreen = ({}) => {
 
   return (
 		<>
-			<Link className="btn btn-dark my-3" to="/">
+			<Link className="btn dark-btn my-3" to="/">
 				Go Back
 			</Link>
 			<Row>
@@ -84,7 +84,7 @@ const ProductScreen = ({}) => {
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Button
-									className="btn w-100"
+									className="btn w-100 add-to-cart"
 									type="button"
 									disabled={product.countInStock === 0}
 								>
