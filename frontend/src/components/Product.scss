@@ -1,0 +1,14 @@
+.product{
+    transition: all .5s ease-in;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.product:hover{
+    background-color: aliceblue;
+    color: rgb(16, 48, 151);
+}
+
+.link{
+    text-decoration: none;
+}

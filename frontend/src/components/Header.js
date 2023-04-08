@@ -2,20 +2,23 @@ import React from 'react'
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
- 
+import logo from './Logoz.png'
+import "./Header.scss"
 const Header = () => {
   return (
 		<header>
-			<Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+			<Navbar className="header" expand="lg" collapseOnSelect>
 				<Container>
-					<Navbar.Brand href="/">Hyde's Den</Navbar.Brand>
+					<Navbar.Brand href="/">
+						<img src={logo} alt="" className="logo" />
+					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ms-auto">
-							<Nav.Link href="/cart">
+							<Nav.Link className="links" href="/cart">
 								<i className="fas fa-shopping-cart"></i> Cart
 							</Nav.Link>
-							<Nav.Link href="/login">
+							<Nav.Link className="links" href="/login">
 								<i className="fas fa-user"></i> Sign In
 							</Nav.Link>
 						</Nav>
