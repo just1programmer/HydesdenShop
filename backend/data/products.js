@@ -1,6 +1,6 @@
 const products = [
 	{
-		_id: "1",
+		
 		name: "Airpods Wireless Bluetooth Headphones",
 		image: "/images/airpods.jpg",
 		description:
@@ -13,7 +13,6 @@ const products = [
 		numReviews: 12,
 	},
 	{
-		_id: "2",
 		name: "iPhone 11 Pro 256GB Memory",
 		image: "/images/phone.jpg",
 		description:
@@ -26,7 +25,6 @@ const products = [
 		numReviews: 8,
 	},
 	{
-		_id: "3",
 		name: "Cannon EOS 80D DSLR Camera",
 		image: "/images/camera.jpg",
 		description:
@@ -39,7 +37,6 @@ const products = [
 		numReviews: 17,
 	},
 	{
-		_id: "4",
 		name: "Sony Playstation 4 Pro White Version",
 		image: "/images/playstation.jpg",
 		description:
@@ -52,7 +49,6 @@ const products = [
 		numReviews: 12,
 	},
 	{
-		_id: "5",
 		name: "Logitech G-Series Gaming Mouse",
 		image: "/images/mouse.jpg",
 		description:
@@ -65,7 +61,6 @@ const products = [
 		numReviews: 10,
 	},
 	{
-		_id: "6",
 		name: "Amazon Echo Dot 3rd Generation",
 		image: "/images/alexa.jpg",
 		description:
@@ -78,7 +73,6 @@ const products = [
 		numReviews: 3,
 	},
 	{
-		_id: "7",
 		name: "Mouse gaming Logitech G502 Hero 25K DPI, Negru",
 		image: "/images/mouse_logitech.jpg",
 		description: `11 butoane programabile
@@ -92,7 +86,6 @@ Utilizati software-ul Logitech Gaming pentru a programa comenzile si macrocomenz
 	},
 
 	{
-		_id: "8",
 		name: "Procesor Intel® Core™ i7-13700K Raptor Lake ",
 		image: "/images/i7.webp",
 		description: `
@@ -108,7 +101,6 @@ Utilizati software-ul Logitech Gaming pentru a programa comenzile si macrocomenz
 	},
 
 	{
-		_id: "9",
 		name: "Procesor Intel® Core™ i9-13900K Raptor Lake",
 		image: "/images/i9.webp",
 		description: `3.0GHz, 5.8 GHz turbo, 36MB, Socket 1700
@@ -123,12 +115,11 @@ Utilizati software-ul Logitech Gaming pentru a programa comenzile si macrocomenz
 	},
 
 	{
-		_id: "10",
 		name: "Placa video ASUS Dual GeForce RTX™ 2060 EVO, 12GB GDDR6, 192-bit",
 		image: "/images/rtx_2060.webp",
 		description: `Placa video ASUS Dual GeForce RTX™ 2060 EVO, 12GB GDDR6, 192-bit
-    2x Ventilatoare. 2x Distractie.
-    Oferind cea mai recenta experienta de joc NVIDIA Turing™ in forma sa cea mai pura, ASUS Dual GeForce RTX™ 2060 EVO imbina performanta si simplitatea ca nimeni altul. Folosindu-se de tehnologiile avansate de racire derivate din placile grafice emblematice, Dual opteaza pentru substanta in detrimentul stilului, fiind alegerea perfecta pentru o constructie bine echilibrata. Puneti-va centura si implicati-va in probele de gaming de ultima generatie.`,
+       2x Ventilatoare. 2x Distractie.
+       Oferind cea mai recenta experienta de joc NVIDIA Turing™ in forma sa cea mai pura, ASUS Dual GeForce RTX™ 2060 EVO imbina performanta si simplitatea ca nimeni altul. Folosindu-se de tehnologiile avansate de racire derivate din placile grafice emblematice, Dual opteaza pentru substanta in detrimentul stilului, fiind alegerea perfecta pentru o constructie bine echilibrata. Puneti-va centura si implicati-va in probele de gaming de ultima generatie.`,
 		brand: "Asus",
 		category: "Electronics",
 		price: 6529.99,
@@ -138,11 +129,10 @@ Utilizati software-ul Logitech Gaming pentru a programa comenzile si macrocomenz
 	},
 
 	{
-		_id: "11",
 		name: "Placa video Gigabyte GeForce® RTX™ 3060 EAGLE OC 2.0 LHR, 12GB GDDR6, 192-bit",
 		image: "/images/rtx_3060.webp",
 		description: `Sistem de racire WINDFORCE 2X
-    Sistemul de racire WINDFORCE 2X are ventilatoare de lama unice de 2X100mm, filare alternativa, 4 conducte de caldura din cupru compozite cu atingere directa GPU, ventilator activ 3D si racire screen, care impreuna asigura o disipare a caldurii de inalta eficienta.`,
+   					 Sistemul de racire WINDFORCE 2X are ventilatoare de lama unice de 2X100mm, filare alternativa, 4 conducte de caldura din cupru compozite cu atingere directa GPU, ventilator activ 3D si racire screen, care impreuna asigura o disipare a caldurii de inalta eficienta.`,
 		brand: "Gygabyte",
 		category: "Electronics",
 		price: 8549.99,
@@ -152,11 +142,9 @@ Utilizati software-ul Logitech Gaming pentru a programa comenzile si macrocomenz
 	},
 
 	{
-		_id: "12",
 		name: "Tastatura gaming Logitech G213 RGB, Butoane multimedia",
 		image: "/images/tastatura_logitech.webp",
-		description: `
-Tastele media dedicate permit comenzile play, pause si skip cat si reglarea volumului muzicii cu o simpla atingere a unui buton, fara sa mai fie nevoie iesirea din joc pentru acest lucru.`,
+		description: `Tastele media dedicate permit comenzile play, pause si skip cat si reglarea volumului muzicii cu o simpla atingere a unui buton, fara sa mai fie nevoie iesirea din joc pentru acest lucru.`,
 		brand: "Logitech",
 		category: "Electronics",
 		price: 449.99,

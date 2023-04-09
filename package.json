@@ -1,28 +1,33 @@
 {
-  "name": "hydesdenshop",
-  "version": "1.0.0",
-  "description": "MERN Shopping app",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server",
-    "server": "nodemon backend/server",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/just1programmer/HydesdenShop.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/just1programmer/HydesdenShop/issues"
-  },
-  "homepage": "https://github.com/just1programmer/HydesdenShop#readme",
-  "dependencies": {
-    "concurrently": "^8.0.1",
-    "express": "^4.18.2",
-    "nodemon": "^2.0.22"
-  }
+	"name": "hydesdenshop",
+	"version": "1.0.0",
+	"description": "MERN Shopping app",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node backend/server",
+		"server": "nodemon backend/server",
+		"client": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
+		"data:import": "node backend/seeder",
+		"data:destroy": "node backend/seeder -d"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/just1programmer/HydesdenShop.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/just1programmer/HydesdenShop/issues"
+	},
+	"homepage": "https://github.com/just1programmer/HydesdenShop#readme",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"concurrently": "^8.0.1",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"mongoose": "^7.0.3",
+		"nodemon": "^2.0.22"
+	}
 }
