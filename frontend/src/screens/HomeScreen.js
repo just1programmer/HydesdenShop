@@ -19,8 +19,6 @@ const HomeScreen = () => {
     dispatch(listProducts())
    },[dispatch])
 
- 
-
 
   return (
 		<>
