@@ -2,12 +2,14 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB  = require('./config/db');
-const productRoutes = require('./routes/productRoutes')
+const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 dotenv.config()
 connectDB();
 
 const app = express();
+app.use(express.json)
 
 app.get('/', (req,res)=>{
     res.send('API is running')
@@ -15,6 +17,7 @@ app.get('/', (req,res)=>{
 
 // Aici efectiv facem un routing. zicem ca daca avem un request catre /api/products, sa folosim routerul din productRoutes
 app.use('/api/products',productRoutes);
+app.use('/api/users',userRoutes)
 
 const PORT = process.env.PORT || 5000
 

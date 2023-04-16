@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
 
 // cream un user schema. schema e ca un constructor pentru o clasa
 
@@ -25,6 +26,21 @@ const userSchema = mongoose.Schema({
     // Acest obiect adauga created at si modified at in schema userului
     timestamps:true
 });
+
+userSchema.methods.matchPassword = async function(enteredPassword){
+	return await bcrypt.compare(enteredPassword,this.password)
+}
+
+userSchema.pre('save',async function(next){
+
+	if(!this.isModified('password')){
+		next();
+	}
+
+	// folosit pentru hashuirea parolei
+	const salt = await bcrypt.genSalt(10);
+	this.password = await bcrypt.hash(this.password,salt)
+})
 
 // Dupa ce cream schema, cream un model cu mongoose.model() 
 
