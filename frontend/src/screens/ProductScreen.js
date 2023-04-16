@@ -1,23 +1,29 @@
 import React ,{useState,useEffect} from 'react' 
-import { Link, useParams } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import {useDispatch,useSelector} from 'react-redux'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import axios from "axios";
+import { Form } from 'react-bootstrap'
 import { listProductDetails } from '../actions/productActions'
 import './ProductScreen.scss'
 
-const ProductScreen = ({}) => {
-	const dispatch = useDispatch();
+const ProductScreen = () => {
 
+const [quantity,setQuantity] = useState(1);
 
-
+const dispatch = useDispatch();
 let { id } = useParams();
+const navigate = useNavigate();
+
 useEffect(() => {
-		dispatch(listProductDetails(id))
-		}, [dispatch]);
+	dispatch(listProductDetails(id))
+	}, [dispatch,id]);
+
+const addToCartHandler = () => {
+	navigate(`/cart/${id}?qty=${quantity}`)
+}
 
 const productDetails = useSelector(state => state.productDetails)
 
@@ -57,7 +63,7 @@ const { loading , error, product } = productDetails
 							</ListGroup.Item>
 							<ListGroup.Item>
 								{" "}
-								<h2>Price: {product.price} Lei</h2>{" "}
+								<h2>Pret: {product.price} Lei</h2>{" "}
 							</ListGroup.Item>
 							<ListGroup.Item>
 								{" "}
@@ -70,7 +76,7 @@ const { loading , error, product } = productDetails
 							<ListGroup variant="flush">
 								<ListGroup.Item>
 									<Row>
-										<Col>Price:</Col>
+										<Col>Pret:</Col>
 										<Col>
 											<strong>{product.price} Lei</strong>
 										</Col>
@@ -78,17 +84,40 @@ const { loading , error, product } = productDetails
 								</ListGroup.Item>
 								<ListGroup.Item>
 									<Row>
-										<Col>Status:</Col>
+										<Col>Statut:</Col>
 										<Col>
-											{product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+											{product.countInStock > 0 ? "In Stock" : "In afara Stockului"}
 										</Col>
 									</Row>
 								</ListGroup.Item>
+								{product.countInStock > 0 && (
+									<ListGroup.Item>
+										<Row>
+											<Col>Cantitate</Col>
+											<Col>
+												<Form.Control
+													as="select"
+													className='form-select'
+													value={quantity}
+													onChange={(e) => setQuantity(e.target.value)}
+												>
+													{[...Array(product.countInStock).keys()].map((x) => (
+														<option key={x + 1} value={x + 1}>
+															{x + 1}
+														</option>
+													))}
+													})}
+												</Form.Control>
+											</Col>
+										</Row>
+									</ListGroup.Item>
+								)}
 								<ListGroup.Item>
 									<Button
 										className="btn w-100 add-to-cart"
 										type="button"
 										disabled={product.countInStock === 0}
+										onClick={addToCartHandler}
 									>
 										Add to cart
 									</Button>
