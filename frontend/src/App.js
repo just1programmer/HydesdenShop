@@ -35,6 +35,11 @@ const router = createBrowserRouter([
 		path: "/profile",
 		element: <ProfileScreen />,
 	},
+
+	{
+		path: "/shipping",
+		element: <ProfileScreen />,
+	},
 ]);
 
 function App() {

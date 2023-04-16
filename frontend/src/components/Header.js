@@ -7,14 +7,18 @@ import {NavDropdown} from 'react-bootstrap'
 import {logout} from '../actions/userActions'
 import logo from './Logoz.png'
 import "./Header.scss"
-
+ 
 
 const Header = () => {
   const dispatch = useDispatch();
 
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
-  
+
+
+
+ 
+
   const logoutHandler = () =>{
 	dispatch(logout())
   }
@@ -34,18 +38,16 @@ const Header = () => {
 							</Nav.Link>
 							{userInfo ? (
 								<NavDropdown
-
-									className='nav-dropdown'
+									className="nav-dropdown"
 									title={
-										<span className="nav-dropdown-text">
-											{userInfo.name}
-										</span>
+										<span className="nav-dropdown-text">{userInfo.name}</span>
 									}
 									id="username"
 								>
-									<Nav.Link href="/profile">
-										<NavDropdown.Item>Profil</NavDropdown.Item>
-									</Nav.Link>
+									<NavDropdown.Item href='/profile'>
+										 Profil 
+									</NavDropdown.Item>
+
 									<NavDropdown.Item onClick={logoutHandler}>
 										Logout
 									</NavDropdown.Item>
