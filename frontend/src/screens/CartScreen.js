@@ -91,7 +91,7 @@ const CartScreen = () => {
         <Card>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2>Subtotal ({cartItems.reduce((accumulator,item)=> Number(accumulator+item.qty),0)}) produse</h2>
+              <h2>Subtotal ({cartItems.reduce((accumulator,item)=> Number(accumulator)+Number(item.qty),0)}) produse</h2>
               Lei {cartItems.reduce((acc,item)=> acc+item.qty * item.price,0).toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
