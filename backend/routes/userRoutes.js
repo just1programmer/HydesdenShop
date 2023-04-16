@@ -60,4 +60,40 @@ router.get('/profile',protect.protect, asyncHandler(async(req,res)=>{
 
 
 
+
+
+//  @description Request pentru a inregistra un user
+//  @route POST /api/users/regist
+//  @access  Public
+router.post('/', asyncHandler(async(req,res)=>{
+
+    const {name, email, password } = req.body;
+    const userExists = await User.findOne({email})
+
+    if(userExists){
+        res.status(400)
+        throw new Error('Userul exista deja')
+    }
+
+    const user = await User.create({
+        name,email,password
+    })
+
+
+    if(user){
+        res.status(201).json({
+						_id: user._id,
+						name: user.name,
+						email: user.email,
+						isAdmin: user.isAdmin,
+						token: tokenModule.generateToken(user._id),
+					});
+    } else {
+        res.status(400)
+        throw new Error('Invalid user data')
+    }
+}
+));
+
+
 module.exports = router;
