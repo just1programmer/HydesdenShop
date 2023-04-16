@@ -40,6 +40,10 @@ const LoginScreen = () => {
     dispatch(login(email,password))
   }
 
+  
+  if(error){
+	console.log(error)
+  }
 
   return (
 		<FormContainer>
