@@ -19,8 +19,6 @@ const ProfileScreen = () => {
 	const userDetails = useSelector((state) => state.userDetails);
 	const { loading, error, user } = userDetails;
 
-
-
 	const orderListMy = useSelector((state) => state.orderListMy);
 	const { loading:loadingOrders, error:errorOrders, orders } = orderListMy;
 

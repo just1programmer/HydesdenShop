@@ -4,7 +4,7 @@ import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listUsers } from "../actions/userActions";
+import { listUsers,deleteUser } from "../actions/userActions";
 
 
 const UserListScreen = () => {
@@ -18,8 +18,16 @@ const UserListScreen = () => {
 	const { userInfo } = userLogin;
 
 
+    
+    const userDelete = useSelector((state) => state.userDelete);
+	const { success:successDelete } = userDelete;
+
+
     const deleteHandler = (id)=>{
-        console.log('delete')
+        if(window.confirm('Esti sigur ca vrei sa stergi userul?')){
+            dispatch(deleteUser(id));
+            console.log(id);
+        }
     }
     useEffect(()=>{
 
@@ -29,7 +37,7 @@ const UserListScreen = () => {
             navigate('/login');
         }
 
-    },[dispatch,navigate])
+    },[dispatch,navigate,successDelete])
 
     return (
 			<>

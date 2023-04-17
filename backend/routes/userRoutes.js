@@ -42,7 +42,7 @@ router.post('/login', asyncHandler(async(req,res)=>{
 //  @description Request pentru a primi profilul userului
 //  @route GET /api/users/profile
 //  @access  Private
-router.get('/profile',protect.protect,protect.admin, asyncHandler(async(req,res)=>{
+router.get('/profile',protect.protect, asyncHandler(async(req,res)=>{
     const user = await User.findById(req.user._id)
 
     if(user){
@@ -127,14 +127,30 @@ router.post('/', asyncHandler(async(req,res)=>{
 }
 ));
 
-
-
 //  @description Request pentru a primi toti userii 
 //  @route GET /api/users
 //  @access  Private/Admin
 router.get('/',protect.protect, asyncHandler(async(req,res)=>{
     const users = await User.find({})
     res.json(users)
+}
+));
+
+//  @description Request pentru a sterge un user
+//  @route DELETE /api/users/:id
+//  @access  Private/Admin
+router.delete('/:id',protect.protect,protect.admin, asyncHandler(async(req,res)=>{
+    
+    const user = await User.findById(req.params.id)
+    console.log(user)
+
+    if(user){
+        await User.deleteOne(user)
+        res.json({message:'User removed'})
+    }else{
+        res.status(404);
+        throw new Error('User not found')
+    }
 }
 ));
 
