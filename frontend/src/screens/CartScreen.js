@@ -15,6 +15,12 @@ const CartScreen = () => {
   const dispatch = useDispatch();
 
 
+
+	const userLogin = useSelector((state) => state.userLogin);
+	const { userInfo } = userLogin;
+
+
+
   const cart = useSelector(state => state.cart)
   const {cartItems} = cart;
 
@@ -35,13 +41,11 @@ const CartScreen = () => {
 
   const checkoutHandler = () =>{
 
-	if(shouldRedirect){
-		navigate("/login", {
-			replace: true, // or true, depending on whether you want to replace the current entry in the history stack or not
-			search: "?redirect=/shipping",
+	if(userInfo){
+		navigate("/shipping", {
 		});
 	} else{
-		navigate('blabla')
+		navigate('/login')
 	}
 
       
