@@ -2,6 +2,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB  = require('./config/db');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
 const orderRoutes = require('./routes/orderRoutes')
@@ -20,6 +21,8 @@ app.get('/', (req,res)=>{
 app.use('/api/products',productRoutes);
 app.use('/api/users',userRoutes);
 app.use('/api/orders',orderRoutes);
+
+
 
 const PORT = process.env.PORT || 5000
 
