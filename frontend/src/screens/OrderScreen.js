@@ -17,7 +17,6 @@ import { LinkContainer } from "react-router-bootstrap";
 import { getOrderDetails } from "../actions/orderActions";
 
 const OrderScreen = () => {
-	
 
     let {id}  = useParams();
 	console.log(id)
@@ -27,7 +26,14 @@ const OrderScreen = () => {
 	const orderDetails = useSelector((state) => state.orderDetails);
 	const { order, loading, error } = orderDetails;
 
-	console.log(order)
+
+	if(!loading){
+	order.itemsPrice = order.orderItems.reduce(
+		(acc, item) => acc + item.price * item.qty,
+		0
+	);
+	}
+
 
 	useEffect(() => {
 	
@@ -50,15 +56,44 @@ const OrderScreen = () => {
 						<ListGroup.Item>
 							<h2>Livrare</h2>
 							<p>
-								<strong>Adresa:</strong>
-								{order.shippingAddress.address}, {order.shippingAddress.city},
-								{order.shippingAddress.postalCode},{order.shippingAddress.country}
+								<strong> Nume: </strong> {order.user.name}
 							</p>
+							<p>
+								Email :{" "}
+								<a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+							</p>
+							<p>
+								<strong>Adresa: </strong>
+								{order.shippingAddress.address}, {order.shippingAddress.city},
+								{order.shippingAddress.postalCode},
+								{order.shippingAddress.country}
+							</p>
+
+							{order.isDelivered ? (
+								<Message variant="success">
+									Livrata la data de : {order.deliveredAt}
+								</Message>
+							) : (
+								<Message variant="danger">
+									Comanda nu a fost inca livrata
+								</Message>
+							)}
 						</ListGroup.Item>
 						<ListGroup.Item>
 							<h2>Metoda de Plata</h2>
-							<strong>Metoda:</strong>
-							{order.paymentMethod}
+							<p>
+								<strong>Metoda:</strong>
+								{order.paymentMethod}
+							</p>
+							{order.isPaid ? (
+								<Message variant="success">
+									Platita la data de : {order.paidAt}
+								</Message>
+							) : (
+								<Message variant="danger">
+									Comanda nu a fost inca platita 
+								</Message>
+							)}
 						</ListGroup.Item>
 						<ListGroup.Item>
 							<h2>Comanda dumneavoastra</h2>
@@ -125,7 +160,6 @@ const OrderScreen = () => {
 									<Col>Lei {order.totalPrice}</Col>
 								</Row>
 							</ListGroup.Item>
-							
 						</ListGroup>
 					</Card>
 				</Col>
