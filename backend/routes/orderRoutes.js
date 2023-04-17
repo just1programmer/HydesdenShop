@@ -57,4 +57,34 @@ router.get("/:id",protect.protect, asyncHandler(async (req, res) => {
 }));
 
 
+
+//  @description Updatare plata comanda
+//  @route PUT /api/orders/:id/pay
+//  @access  Private
+
+router.put("/:id/pay",protect.protect, asyncHandler(async (req, res) => {
+	
+	const order = await Order.findById(req.params.id)
+
+	if(order){
+		order.isPaid = true
+		order.paidAt = Date.now();
+
+		// aceste date vin din Paypal API
+		order.paymentResult = {
+			id: req.body.id,
+			status: req.body.status,
+			update_time:req.body.update_time,
+			email_address: req.body.payer.email_address
+		}
+		const updatedOrder = await order.save();
+		res.json(updatedOrder)
+	}else{
+		res.status(404)
+		throw new Error('Order not found')
+	}
+
+}));
+
+
 module.exports= router
