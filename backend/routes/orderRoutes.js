@@ -39,6 +39,27 @@ if(orderItems && orderItems.length ===0){
 }));
 
 
+
+//  @description Primim comenzile userului logat
+//  @route GET /api/orders/myorders
+//  @access  Private
+
+router.get("/myorders",protect.protect, asyncHandler(async (req, res) => {
+	
+
+	console.log(req.body)
+
+	const orders = await Order.find({user: req.user.id})
+	console.log('============== ORDERS /MYORDERS ',orders)
+	res.json(orders)
+
+}));
+
+
+
+
+
+
 //  @description Request pentru a primi o comanda - prin ID 
 //  @route GET /api/orders/:id
 //  @access  Private
@@ -87,18 +108,6 @@ router.put("/:id/pay",protect.protect, asyncHandler(async (req, res) => {
 }));
 
 
-
-
-//  @description Primim comenzile userului logat
-//  @route GET /api/orders/myorders
-//  @access  Private
-
-router.get("/myorders",protect.protect, asyncHandler(async (req, res) => {
-	
-	const orders = await Order.find({user: req.user._id})
-	res.json(orders)
-
-}));
 
 
 module.exports= router
