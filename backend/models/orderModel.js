@@ -17,7 +17,7 @@ const orderSchema = mongoose.Schema(
 				},
 				quantity: {
 					type: Number,
-					required: true,
+					
 				},
 				image: {
 					type: String,
@@ -54,7 +54,7 @@ const orderSchema = mongoose.Schema(
 		},
 		paymentMethod: {
 			type: String,
-			required: true,
+			
 		},
 		// paymentResult vine de la Paypal
 		paymentResult: {
