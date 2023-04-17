@@ -1,6 +1,6 @@
-import React, { useState,useEffect } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Button,Row, Col,ListGroup,Image,Card, ListGroupItem, NavLink } from "react-bootstrap";
+import React, {useEffect } from "react";
+import {  useNavigate, } from "react-router-dom";
+import { Button,Row, Col,ListGroup,Image,Card, NavLink } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from '../components/Message'
 import CheckoutSteps from "../components/CheckoutSteps";
@@ -32,13 +32,15 @@ const PlaceOrderScreen = () => {
 	const orderCreate = useSelector(state=> state.orderCreate)
 	const {order,success,error} = orderCreate
 
+	
 
 
 	useEffect(()=>{
 		if(success){
+			console.log(order._id);
 			navigate(`/order/${order._id}`)
 		}
-	},[dispatch,success])
+	},[dispatch,success,navigate])
 
     const placeOrderHandler = ()=>{
         dispatch(createOrder({

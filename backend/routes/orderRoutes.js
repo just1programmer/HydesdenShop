@@ -6,11 +6,14 @@ const router = express.Router();
 // Aducem modelul User
 const Order = require("../models/orderModel");
 const protect = require("../middleware/authMiddleware");
+
+
+
 //  @description Crearea unei noi comenzi
 //  @route POST /api/orders
 //  @access  Private
 router.post("/",protect.protect, asyncHandler(async (req, res) => {
-	
+
 const {orderItems,shippingAddress,paymentMethod,itemsPrice,taxPrice,shippingPrice,totalPrice} = req.body
 
 if(orderItems && orderItems.length ===0){
@@ -34,5 +37,24 @@ if(orderItems && orderItems.length ===0){
 }
 
 }));
+
+
+//  @description Request pentru a primi o comanda - prin ID 
+//  @route GET /api/orders/:id
+//  @access  Private
+
+router.get("/:id",protect.protect, asyncHandler(async (req, res) => {
+	
+	const order = await Order.findById(req.params.id).populate('user','name email')
+
+	if(order){
+		res.json(order)
+	}else{
+		res.status(404)
+		throw new Error('Order not found')
+	}
+
+}));
+
 
 module.exports= router
