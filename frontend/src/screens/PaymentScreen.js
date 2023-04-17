@@ -48,7 +48,7 @@ const PaymentScreen = () => {
 							name="paymentMethod"
 							value="PayPal"
 							checked
-							onChange={(e) => setPaymentMethod(e.targe.value)}
+							onChange={(e) => setPaymentMethod(e.target.value)}
 						></Form.Check>
 						<Form.Check
 							type="radio"
@@ -56,8 +56,7 @@ const PaymentScreen = () => {
 							id="Stripe"
 							name="paymentMethod"
 							value="Stripe"
-							checked
-							onChange={(e) => setPaymentMethod(e.targe.value)}
+							onChange={(e) => setPaymentMethod(e.target.value)}
 						></Form.Check>
 						<Form.Check
 							type="radio"
@@ -65,8 +64,7 @@ const PaymentScreen = () => {
 							id="Cash"
 							name="paymentMethod"
 							value="Cash"
-							checked
-							onChange={(e) => setPaymentMethod(e.targe.value)}
+							onChange={(e) => setPaymentMethod(e.target.value)}
 						></Form.Check>
 					</Col>
 				</Form.Group>

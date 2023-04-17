@@ -1,0 +1,138 @@
+import React, { useState } from "react";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Button,Row, Col,ListGroup,Image,Card, ListGroupItem, NavLink } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import Message from '../components/Message'
+import CheckoutSteps from "../components/CheckoutSteps";
+import { LinkContainer } from "react-router-bootstrap";
+
+const PlaceOrderScreen = () => {
+
+
+    const cart = useSelector(state=> state.cart);
+    const {paymentMethod} = cart;
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+ 
+    // Calculate prices
+    cart.itemsPrice = cart.cartItems.reduce((acc,item)=> acc+item.price * item.qty,0)
+
+    // costul de transport
+    cart.shippingPrice = cart.itemsPrice > 1000 ? 0 : 25
+
+    // taxa TVA pe care o plateste clientul pentru produs
+    cart.taxPrice = Number(0.19 * cart.itemsPrice).toFixed(2)
+
+
+    cart.totalPrice = cart.itemsPrice + cart.shippingPrice
+
+    const placeOrderHandler = ()=>{
+        console.log('order')
+    }
+
+	return (
+		<>
+			<CheckoutSteps step1 step2 step3 step4 />
+			<Row>
+				<Col md={8}>
+					<ListGroup variant="flush">
+						<ListGroup.Item>
+							<h2>Livrare</h2>
+							<p>
+								<strong>Adresa:</strong>
+								{cart.shippingAddress.address}, {cart.shippingAddress.city},
+								{cart.shippingAddress.postalCode},{cart.shippingAddress.country}
+							</p>
+						</ListGroup.Item>
+						<ListGroup.Item>
+							<h2>Metoda de Plata</h2>
+							<strong>Metoda:</strong>
+							{paymentMethod.paymentMethod}
+						</ListGroup.Item>
+						<ListGroup.Item>
+							<h2>Comanda dumneavoastra</h2>
+
+							{cart.cartItems.length === 0 ? (
+								<Message>Cosul dvs de cumparaturi este gol</Message>
+							) : (
+								<ListGroup variant="flush">
+									{cart.cartItems.map((item, index) => (
+										<ListGroup.Item key={index}>
+											<Row>
+												<Col md={1}>
+													<Image
+														src={item.image}
+														alt={item.name}
+														fluid
+														rounded
+													/>
+												</Col>
+												<Col>
+													<LinkContainer to={`/product/${item.product}`}>
+														<NavLink>{item.name}</NavLink>
+													</LinkContainer>
+												</Col>
+												<Col md={4}>
+													{item.qty} x Lei{item.price} = Lei{" "}
+													{item.qty * item.price}
+												</Col>
+											</Row>
+										</ListGroup.Item>
+									))}
+								</ListGroup>
+							)}
+						</ListGroup.Item>
+					</ListGroup>
+				</Col>
+				<Col md={4}>
+					<Card>
+						<ListGroup variant="flush">
+							<ListGroup.Item>
+								<h2>Sumarul Comenzii</h2>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<Row>
+									<Col>Obiecte</Col>
+									<Col>Lei {cart.itemsPrice}</Col>
+								</Row>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<Row>
+									<Col>Livrare</Col>
+									<Col>Lei {cart.shippingPrice}</Col>
+								</Row>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<Row>
+									<Col>Taxa TVA 19%</Col>
+									<Col>Lei {cart.taxPrice}</Col>
+								</Row>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<Row>
+									<Col>
+										Pret Total
+									</Col>
+									<Col>Lei {cart.totalPrice}</Col>
+								</Row>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								<Button
+									type="button"
+									className="w-100"
+									disabled={cart.cartItems === 0}
+									onClick={placeOrderHandler}
+								>
+									Plaseaza comanda
+								</Button>
+							</ListGroup.Item>
+						</ListGroup>
+					</Card>
+				</Col>
+			</Row>
+		</>
+	);
+};
+
+export default PlaceOrderScreen;
