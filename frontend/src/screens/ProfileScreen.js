@@ -128,10 +128,10 @@ const ProfileScreen = () => {
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>DATE</th>
+								<th>DATA</th>
 								<th>TOTAL</th>
-								<th>PAID</th>
-								<th>DELIVERED</th>
+								<th>STAREA PLATII</th>
+								<th>LIVRAT</th>
 								<th></th>
 							</tr>
 						</thead>
