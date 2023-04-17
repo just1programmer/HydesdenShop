@@ -32,7 +32,7 @@ const PlaceOrderScreen = () => {
 	const orderCreate = useSelector(state=> state.orderCreate)
 	const {order,success,error} = orderCreate
 
-	
+	console.log('===== cart Items : ', cart.cartItems)
 
 
 	useEffect(()=>{

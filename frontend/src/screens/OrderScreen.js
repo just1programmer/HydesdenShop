@@ -27,6 +27,8 @@ const OrderScreen = () => {
 	const orderDetails = useSelector((state) => state.orderDetails);
 	const { order, loading, error } = orderDetails;
 
+	console.log(order)
+
 	useEffect(() => {
 	
         dispatch(getOrderDetails(id))
@@ -62,7 +64,7 @@ const OrderScreen = () => {
 							<h2>Comanda dumneavoastra</h2>
 
 							{order.orderItems.length === 0 ? (
-								<Message>Cosul dvs de cumparaturi este gol</Message>
+								<Message>Comanda nu exista</Message>
 							) : (
 								<ListGroup variant="flush">
 									{order.orderItems.map((item, index) => (
@@ -82,7 +84,7 @@ const OrderScreen = () => {
 													</LinkContainer>
 												</Col>
 												<Col md={4}>
-													{item.qty} x Lei{item.price} = Lei{" "}
+													{item.qty} x Lei{item.price} = Lei
 													{item.qty * item.price}
 												</Col>
 											</Row>
