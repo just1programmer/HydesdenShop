@@ -6,7 +6,8 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions'
 import HydesDenCarousel from '../components/HydesDenCarousel'
- 
+import Location from '../components/Location' 
+import Partners from '../components/Partners'
 
 const HomeScreen = () => {
  
@@ -23,23 +24,33 @@ const HomeScreen = () => {
 
   return (
 		<>
-			<h1>Produsele noastre</h1>
 			{loading ? (
 				<Loader />
 			) : error ? (
-				<Message variant='danger'>{error}</Message>
+				<Message variant="danger">{error}</Message>
 			) : (
-				
-				<Row>
-					<HydesDenCarousel/>
-					{products.map((product) => {
-						return (
-							<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-								<Product product={product} />
-							</Col>
-						);
-					})}
-				</Row>
+				<>
+					<Row>
+						<HydesDenCarousel />
+						<h1>Produsele noastre</h1>
+						<hr />
+						{products.map((product) => {
+							return (
+								<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+									<Product product={product} />
+								</Col>
+							);
+						})}
+						<hr />
+					</Row>
+					<Row>
+						<Partners />
+						<hr />
+					</Row>
+					 <Row>
+						<Location id="#contact" />
+					 </Row>
+				</>
 			)}
 		</>
 	);

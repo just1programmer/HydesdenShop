@@ -4,11 +4,14 @@
 }
 
 .header{
-    background-color: black;
+    background-image: url('../headersvg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 6px #ffffff;
 }
 
 .links{
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .links:hover{
@@ -17,12 +20,15 @@
 }
 
 .nav-dropdown-text{
-    color: white;
+    color: rgb(221, 6, 6);
+    font-weight: 700;
 }
 
 .nav-dropdown{
-    background-color: rgb(121, 10, 185);
+    background-color: rgb(255, 255, 255);
     border-radius: 1rem;
-    color: rgb(255, 255, 255);
-   
+    color: rgb(0, 0, 0);
+    width: 100px;    
 }
+
+ 

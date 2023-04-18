@@ -16,6 +16,9 @@ import UserListScreen from './screens/UserListScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import ContactScreen from './screens/ContactScreen'
+import Location from './components/Location';
+
+
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -80,6 +83,11 @@ const router = createBrowserRouter([
 	{
 		path: "/admin/productlist",
 		element: <ProductListScreen />,
+	},
+
+	{
+		path: "/location",
+		element: <Location />,
 	},
 ]);
 

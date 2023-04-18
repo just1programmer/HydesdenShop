@@ -1,10 +1,10 @@
 import GoogleMap from "google-map-react";
-import styles from 'styles/Home/Location.module.scss'
+import './Location.scss'
 
 function Marker() {
     /* &apos; pentru ' ca nu exista ca si caracter */
     return (
-        <div className={styles.marker}>
+        <div className='marker'>
             Hyde&apos;s Den
         </div>
     )
@@ -13,14 +13,14 @@ function Marker() {
 /* https://console.cloud.google.com/google/maps-apis/api-list?project=hydes-den */
 export default function Location() {
     return (
-        <section className={styles.location} id="contact">
+        <section className='location' id="contact">
             <h1>
                 Contact
             </h1>
             <div>
                 <address>
                     <p>Strada Barlogului , Nr.45, BRASOV, Romania, 050881</p>
-                    <p>PROGRAM: 12:00 – 06:00</p>
+                    <p>PROGRAM: 11:00 – 04:00</p>
                     <p>Business inquiries <a href="mailto:office@nexusclub.ro">office@Hydesclub.ro</a></p>
                     <p>Rezervari <a href="tel:+40749046133">0749 046 133</a></p>
                 </address>
