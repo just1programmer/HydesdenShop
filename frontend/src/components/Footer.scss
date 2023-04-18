@@ -2,4 +2,20 @@ footer{
     padding: 1rem 0;
     background-color:#000000;;
     color: white;
+    position: relative;
+}
+
+.gototop{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    background-color: rgb(255, 125, 60);
+    padding: 1rem;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
