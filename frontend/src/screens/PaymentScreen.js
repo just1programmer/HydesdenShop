@@ -62,6 +62,7 @@ const PaymentScreen = () => {
 							type="radio"
 							label="Numerar"
 							id="Cash"
+							checked={true}
 							name="paymentMethod"
 							value="Cash"
 							onChange={(e) => setPaymentMethod(e.target.value)}
