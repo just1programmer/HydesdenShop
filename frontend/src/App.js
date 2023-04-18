@@ -13,7 +13,7 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import UserListScreen from './screens/UserListScreen';
-
+import UserEditScreen from './screens/UserEditScreen';
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -64,6 +64,11 @@ const router = createBrowserRouter([
 	{
 		path: "/admin/userlist",
 		element: <UserListScreen />,
+	},
+
+	{
+		path: "/admin/user/:id/edit",
+		element: <UserEditScreen />,
 	},
 ]);
 

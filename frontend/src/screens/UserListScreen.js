@@ -37,7 +37,7 @@ const UserListScreen = () => {
             navigate('/login');
         }
 
-    },[dispatch,navigate,successDelete])
+    },[dispatch,navigate,successDelete,userInfo])
 
     return (
 			<>
@@ -65,7 +65,7 @@ const UserListScreen = () => {
                                     <td><a href={`mailto:${user.email}`}>{user.email}</a></td>
                                     <td>{user.isAdmin ? (<i className="fas fa-check" style={{color:'green'}}></i>):(<i className="fas fa-times" style={{color:'red'}}></i>)}</td>
                                     <td>
-                                        <Link to={`/user/${user._id}/edit`}>
+                                        <Link to={`/admin/user/${user._id}/edit`}>
                                             <Button variant="light" className="btn-sm">
                                                 <i className="fas fa-edit"></i>
                                             </Button>
