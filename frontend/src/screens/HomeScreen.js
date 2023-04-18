@@ -5,6 +5,7 @@ import Product from '../components/Product'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions'
+import HydesDenCarousel from '../components/HydesDenCarousel'
  
 
 const HomeScreen = () => {
@@ -28,7 +29,9 @@ const HomeScreen = () => {
 			) : error ? (
 				<Message variant='danger'>{error}</Message>
 			) : (
+				
 				<Row>
+					<HydesDenCarousel/>
 					{products.map((product) => {
 						return (
 							<Col key={product._id} sm={12} md={6} lg={4} xl={3}>
