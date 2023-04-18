@@ -25,14 +25,6 @@ const reviewSchema = mongoose.Schema({
 
 const productSchema = mongoose.Schema(
 	{
-		user: {
-			// punem user aici ca sa stim care user a creat produsul.
-			// ca si tip punem mongoose.Schema.Types.ObjectId astfel ne ia userul .
-			type: mongoose.Schema.Types.ObjectId,
-			required: true,
-			// Trebuie sa facem o referinta la un model specific - adica User
-			ref: "User",
-		},
 		name: {
 			type: String,
 			required: true,

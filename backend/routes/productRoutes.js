@@ -58,7 +58,6 @@ router.post("/", asyncHandler(async(req, res) => {
     const product = new Product({
         name: 'Nume produs',
         price: 0,
-        user : req.user._id,
         image: '/images/sample.jpg',
         brand: 'Nume Brand',
         category: 'Nume categorie',
@@ -80,7 +79,7 @@ router.put("/:id", asyncHandler(async(req, res) => {
    
     const {name,price,description,image,brand,category,countInStock} = req.body
 
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findById(req.params._id)
     if(product){
 
     product.name = name;
