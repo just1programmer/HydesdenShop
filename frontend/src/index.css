@@ -1,8 +1,8 @@
  main {
   min-height: 80vh;
   background-color: rgb(247, 245, 245);
-
-  background-image: url('./waves.svg');
+  color: white;
+  background-image: url('./wavesreserve.svg');
   background-size:cover;
   background-repeat: no-repeat;
 }
@@ -36,5 +36,9 @@
  }
 
 
+
+ .form-label{
+  color: white;
+ }
 
  

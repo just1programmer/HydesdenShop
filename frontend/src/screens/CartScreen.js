@@ -55,7 +55,7 @@ const CartScreen = () => {
 		<Row>
 			<Col md={8}>
 				<h1>Cos de cumparaturi</h1>
-				<Link className="btn dark-btn my-3" to="/">
+				<Link className="btn btn-light my-3" to="/">
 					Mergi la pagina principala
 				</Link>
 				{cartItems.length === 0 ? (

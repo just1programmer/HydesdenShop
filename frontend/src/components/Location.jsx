@@ -23,6 +23,7 @@ export default function Location() {
                     <p>PROGRAM: 11:00 – 04:00</p>
                     <p>Business inquiries <a href="mailto:office@nexusclub.ro">office@Hydesclub.ro</a></p>
                     <p>Rezervari <a href="tel:+40749046133">0749 046 133</a></p>
+                    <a href="/contact">Click aici ca sa ne lasi o parere </a>
                 </address>
                 <div style={{ height: "500px", width: "700px" }}>
                     <GoogleMap
