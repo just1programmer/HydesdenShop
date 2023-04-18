@@ -17,7 +17,7 @@ const PlaceOrderScreen = () => {
 
  
     // Calculate prices
-    cart.itemsPrice = cart.cartItems.reduce((acc,item)=> acc+item.price * item.qty,0)
+    cart.itemsPrice = cart.cartItems.reduce((acc,item)=> acc+item.price * item.qty,0).toFixed(2)
 
     // costul de transport
     cart.shippingPrice = cart.itemsPrice > 1000 ? 0 : 25
@@ -26,7 +26,7 @@ const PlaceOrderScreen = () => {
     cart.taxPrice = Number(0.19 * cart.itemsPrice).toFixed(2)
 
 
-    cart.totalPrice = cart.itemsPrice + cart.shippingPrice
+    cart.totalPrice = Number(cart.itemsPrice + cart.shippingPrice).toFixed(2)
 
 
 	const orderCreate = useSelector(state=> state.orderCreate)

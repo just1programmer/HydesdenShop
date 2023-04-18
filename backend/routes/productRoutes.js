@@ -31,4 +31,23 @@ router.get("/:id", asyncHandler(async(req, res) => {
     }
 }));
 
+
+
+//  @description Request pentru a sterge un produs
+//  @route DELETE /api/products/:id
+//  @access  Private/Admin
+router.delete("/:id", asyncHandler(async(req, res) => {
+	// We can get the parameters of a request with req.params :) )
+	const product = await Product.findById(req.params.id)
+    if(product){
+        await Product.deleteOne(product)
+        res.json({
+            message:'Product removed'
+        })
+    }else{
+        res.status(404);
+        throw new Error('Product not found')
+    }
+}));
+
 module.exports = router;
