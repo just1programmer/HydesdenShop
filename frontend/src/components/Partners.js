@@ -20,7 +20,7 @@ export default function Partners() {
 						key={partnerLogo}
 						src={`/partners/${partnerLogo}`}
 						alt={partnerLogo}
-						width={165}
+						width={140}
 						height={98}
 					/>
 				))}

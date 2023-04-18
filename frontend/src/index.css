@@ -7,7 +7,6 @@
   background-repeat: no-repeat;
 }
 
-
  h3{
     padding: 1rem 0;
     color: white;
@@ -35,10 +34,13 @@
    font-weight: bold;
  }
 
-
-
  .form-label{
   color: white;
  }
 
+@media only screen and (min-width: 900px) {
+  main {
+    background-position: center center;
+  }
+}
  

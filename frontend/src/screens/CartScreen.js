@@ -4,7 +4,8 @@ import { Link, useNavigate, useSearchParams,useParams, Navigate } from "react-ro
 import Message from '../components/Message'
 import {Row,Col, ListGroup,Image,Form,Button,Card} from 'react-bootstrap'
 import { addToCart,removeFromCart } from '../actions/cartActions'
- 
+import "./CartScreen.scss"
+
 const CartScreen = () => {
 
   let { id } = useParams();
@@ -52,8 +53,8 @@ const CartScreen = () => {
   }
 
   return (
-		<Row>
-			<Col md={8}>
+		<Row className="cart-order">
+			<Col md={12}>
 				<h1>Cos de cumparaturi</h1>
 				<Link className="btn btn-light my-3" to="/">
 					Mergi la pagina principala
@@ -109,27 +110,30 @@ const CartScreen = () => {
 					</ListGroup>
 				)}
 			</Col>
-			<Col md={4}>
+			<Col md={12}>
 				<Card>
 					<ListGroup variant="flush">
 						<ListGroup.Item>
-							<h2>
+							<h1 className="text-end">
 								Subtotal (
 								{cartItems.reduce(
 									(accumulator, item) => Number(accumulator) + Number(item.qty),
 									0
 								)}
 								) produse
+							</h1>
+							<h2 className="text-end">
+								{" "}
+								Lei{" "}
+								{cartItems
+									.reduce((acc, item) => acc + item.qty * item.price, 0)
+									.toFixed(2)}
 							</h2>
-							Lei{" "}
-							{cartItems
-								.reduce((acc, item) => acc + item.qty * item.price, 0)
-								.toFixed(2)}
 						</ListGroup.Item>
-						<ListGroup.Item>
+						<ListGroup.Item  >
 							<Button
 								type="button"
-								className="btn-block"
+								className="btn-block w-100 cart-btn"
 								disabled={cartItems.length === 0}
 								onClick={checkoutHandler}
 							>

@@ -1,0 +1,18 @@
+.cart-order{
+    background-color: rgb(19, 19, 19);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 20px rgb(161, 31, 184);
+}
+
+.cart-btn{
+     transition: all 1s ease-in;
+     background-color: purple;
+     font-weight: bold;
+     width: 100%;
+  
+}
+ 
+.cart-btn:hover{
+      background-color: rgb(0, 0, 0);
+}
