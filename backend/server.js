@@ -1,4 +1,5 @@
 // Entry point for BE
+const path = require('path')
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB  = require('./config/db');
@@ -6,6 +7,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
 const orderRoutes = require('./routes/orderRoutes')
+const uploadRoutes = require('./routes/uploadRoutes')
 
 dotenv.config()
 connectDB();
@@ -21,8 +23,10 @@ app.get('/', (req,res)=>{
 app.use('/api/products',productRoutes);
 app.use('/api/users',userRoutes);
 app.use('/api/orders',orderRoutes);
+app.use('/api/upload',uploadRoutes)
 
-
+// const __dirname = path.resolve() in caz de e nevoie
+app.use('/uploads',express.static(path.join(__dirname, '/uploads')))
 
 const PORT = process.env.PORT || 5000
 
