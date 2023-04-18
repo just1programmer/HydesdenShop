@@ -78,8 +78,9 @@ router.post("/", asyncHandler(async(req, res) => {
 router.put("/:id", asyncHandler(async(req, res) => {
    
     const {name,price,description,image,brand,category,countInStock} = req.body
-
-    const product = await Product.findById(req.params._id)
+    console.log(req.params)
+    const product = await Product.findById(req.params.id)
+    // DANGER ---> NU MERGE req.params._id !! folosesc .id in loc !!! 
     if(product){
 
     product.name = name;
