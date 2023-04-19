@@ -19,4 +19,14 @@ footer{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: all .5s ease;
+}
+.gototop:hover{
+    transform: scale(1.1);
+    background-color: rgb(232, 93, 18);
+    font-size: large;
+}
+ 
+.copyright{
+    color: white;
 }

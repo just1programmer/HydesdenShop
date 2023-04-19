@@ -37,7 +37,7 @@ const { loading , error, product } = productDetails
   return (
 		<>
 			<Link className="btn dark-btn my-3" to="/">
-				Go Back
+				<span> Go Back</span>
 			</Link>
 			{loading ? (
 				<Loader />
@@ -86,7 +86,9 @@ const { loading , error, product } = productDetails
 									<Row>
 										<Col>Statut:</Col>
 										<Col>
-											{product.countInStock > 0 ? "In Stock" : "In afara Stockului"}
+											{product.countInStock > 0
+												? "In Stock"
+												: "In afara Stockului"}
 										</Col>
 									</Row>
 								</ListGroup.Item>
@@ -97,7 +99,7 @@ const { loading , error, product } = productDetails
 											<Col>
 												<Form.Control
 													as="select"
-													className='form-select'
+													className="form-select"
 													value={quantity}
 													onChange={(e) => setQuantity(e.target.value)}
 												>
@@ -106,7 +108,7 @@ const { loading , error, product } = productDetails
 															{x + 1}
 														</option>
 													))}
-													})}
+													
 												</Form.Control>
 											</Col>
 										</Row>

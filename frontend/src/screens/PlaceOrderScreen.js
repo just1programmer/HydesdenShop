@@ -6,7 +6,7 @@ import Message from '../components/Message'
 import CheckoutSteps from "../components/CheckoutSteps";
 import { LinkContainer } from "react-router-bootstrap";
 import { createOrder } from "../actions/orderActions";
-
+import "./PlaceOrderScreen.scss"
 const PlaceOrderScreen = () => {
 
 
@@ -17,8 +17,8 @@ const PlaceOrderScreen = () => {
 
  
     // Calculate prices
-    cart.itemsPrice = cart.cartItems.reduce((acc,item)=> acc+item.price * item.qty,0).toFixed(2)
-
+    cart.itemsPrice = cart.cartItems.reduce((acc,item)=> acc+item.price * item.qty,0)
+	cart.itemsPrice = Number(cart.itemsPrice).toFixed(2)
     // costul de transport
     cart.shippingPrice = cart.itemsPrice > 1000 ? 0 : 25
 
@@ -58,9 +58,9 @@ const PlaceOrderScreen = () => {
 		<>
 			<CheckoutSteps step1 step2 step3 step4 />
 			<Row>
-				<Col md={8}>
+				<Col md={8} className="p-4">
 					<ListGroup variant="flush">
-						<ListGroup.Item>
+						<ListGroup.Item className="order-details p-5">
 							<h2>Livrare</h2>
 							<p>
 								<strong>Adresa:</strong>
@@ -68,12 +68,12 @@ const PlaceOrderScreen = () => {
 								{cart.shippingAddress.postalCode},{cart.shippingAddress.country}
 							</p>
 						</ListGroup.Item>
-						<ListGroup.Item>
+						<ListGroup.Item className="order-details  p-5">
 							<h2>Metoda de Plata</h2>
 							<strong>Metoda:</strong>
 							{paymentMethod.paymentMethod}
 						</ListGroup.Item>
-						<ListGroup.Item>
+						<ListGroup.Item className="order-details p-5">
 							<h2>Comanda dumneavoastra</h2>
 
 							{cart.cartItems.length === 0 ? (
@@ -81,7 +81,7 @@ const PlaceOrderScreen = () => {
 							) : (
 								<ListGroup variant="flush">
 									{cart.cartItems.map((item, index) => (
-										<ListGroup.Item key={index}>
+										<ListGroup.Item key={index} className="order-details">
 											<Row>
 												<Col md={1}>
 													<Image
@@ -97,7 +97,7 @@ const PlaceOrderScreen = () => {
 													</LinkContainer>
 												</Col>
 												<Col md={4}>
-													{item.qty} x Lei{item.price} = Lei{" "}
+													{item.qty} x Lei {item.price} = Lei{" "}
 													{item.qty * item.price}
 												</Col>
 											</Row>
@@ -108,7 +108,7 @@ const PlaceOrderScreen = () => {
 						</ListGroup.Item>
 					</ListGroup>
 				</Col>
-				<Col md={4}>
+				<Col md={4} className="my-4">
 					<Card>
 						<ListGroup variant="flush">
 							<ListGroup.Item>
@@ -122,7 +122,7 @@ const PlaceOrderScreen = () => {
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
-									<Col>Livrare</Col>
+									<Col className="text-start">Livrare</Col>
 									<Col>Lei {cart.shippingPrice}</Col>
 								</Row>
 							</ListGroup.Item>
@@ -134,15 +134,11 @@ const PlaceOrderScreen = () => {
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
-									<Col>
-										Pret Total
-									</Col>
+									<Col>Pret Total</Col>
 									<Col>Lei {cart.totalPrice}</Col>
 								</Row>
 							</ListGroup.Item>
-							<ListGroup.Item>
-								{error && <Message variant='danger'>{error}</Message>}
-							</ListGroup.Item>
+								{error && <Message variant="danger">{error}</Message>}
 							<ListGroup.Item>
 								<Button
 									type="button"

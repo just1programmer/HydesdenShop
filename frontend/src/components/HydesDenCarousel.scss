@@ -8,16 +8,16 @@
 }
 
 .image{
-    height: 600px;
+    height: 450px;
     width: 100%;
     border-radius: 1rem;
 }
 .carousel-caption{
     font-size: 48px;
-  background: -webkit-linear-gradient(#434343, #a808f8);
+  background: -webkit-linear-gradient(#434343, rgb(255, 125, 60));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px #a808f8;
+  text-shadow: 2px 2px rgb(255, 125, 60);
  
 
     font-family: 'Reggae One', cursive;

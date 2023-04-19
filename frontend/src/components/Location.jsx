@@ -14,7 +14,7 @@ function Marker() {
 export default function Location() {
     return (
 			<section className="location" id="contact">
-				<h1 style={{ color: "orange" }}>Contact</h1>
+				<h1 style={{ color: "rgb(255, 125, 60)", textDecoration:'underline', textDecorationThickness:'4px',textUnderlineOffset:'20px', margin:'2rem 0' }}>Contact</h1>
 				<div>
 					<address>
 						<p>Strada Barlogului , Nr.45, BRASOV, Romania, 050881</p>

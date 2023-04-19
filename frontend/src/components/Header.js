@@ -33,9 +33,9 @@ const Header = () => {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ms-auto">
-							<Nav.Link className="links" href="#contact">
+							<a className="links contact" href="#contact">
 								<i className="fas fa-envelope"></i> <span>Contact</span>
-							</Nav.Link>
+							</a>
 							<Nav.Link className="links" href="/cart">
 								<i className="fas fa-shopping-cart"></i> <span>Cart</span>
 							</Nav.Link>

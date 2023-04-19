@@ -55,9 +55,9 @@ const CartScreen = () => {
   return (
 		<Row className="cart-order">
 			<Col md={12}>
-				<h1>Cos de cumparaturi</h1>
+				<h1 style={{ color: "black" }}>Coș de cumpărături</h1>
 				<Link className="btn btn-light my-3 btn-reggaefont" to="/">
-					Mergi la pagina principala
+					Mergi la pagina principală
 				</Link>
 				{cartItems.length === 0 ? (
 					<Message>
@@ -74,7 +74,9 @@ const CartScreen = () => {
 									<Col md={3}>
 										<Link to={`/product/${item.product}`}>{item.name}</Link>
 									</Col>
-									<Col md={2}>Lei {item.price}</Col>
+									<Col md={2}>
+										<span>Lei {item.price} </span>
+									</Col>
 									<Col md={2}>
 										<Form.Control
 											as="select"
@@ -130,7 +132,7 @@ const CartScreen = () => {
 									.toFixed(2)}
 							</h2>
 						</ListGroup.Item>
-						<ListGroup.Item  >
+						<ListGroup.Item>
 							<Button
 								type="button"
 								className="btn-block w-100 cart-btn"

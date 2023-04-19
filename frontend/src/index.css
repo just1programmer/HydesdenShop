@@ -13,9 +13,10 @@ main {
 /* ========= headinguri  */
  h1{
    font-size: 1.8rem;
-   padding: 1rem 0;
+   padding: 1rem;
    color: white;
    font-family: 'Reggae One', cursive;
+ 
  }
 
  h2{
@@ -64,7 +65,8 @@ main {
 /* ============== scrollbarul */
 
 body::-webkit-scrollbar {
-  width: 1em;
+  width: 0.5em;
+  background-color: rgb(28, 28, 28);
 }
  
 body::-webkit-scrollbar-track {
@@ -72,8 +74,11 @@ body::-webkit-scrollbar-track {
 }
  
 body::-webkit-scrollbar-thumb {
+  
   background-color: rgb(255, 125, 60);
-  outline: 1px solid rgb(255, 125, 60);
+  outline: 1px solid rgb(255, 125, 60); 
+ 
+ 
 }
 
 /* =========================== */
@@ -111,9 +116,18 @@ td{
 /* ================================ */
 
 
+/* ========== Formulare ======== */
+
+form{
+    background: rgb(255, 125, 60);
+    padding: 2rem;
+    font-family: 'Reggae One';
+ }
+
 @media only screen and (min-width: 900px) {
   main {
     background-position: center center;
   }
 }
  
+

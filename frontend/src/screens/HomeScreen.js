@@ -32,7 +32,7 @@ const HomeScreen = () => {
 				<>
 					<Row>
 						<HydesDenCarousel />
-						<h1 style={{color:'orange'}}>Produsele noastre</h1>
+						<h1 style={{ color: "rgb(255, 125, 60)", textDecoration:'underline', textDecorationThickness:'4px',textUnderlineOffset:'20px' }}>Produsele noastre</h1>
 						<hr />
 						{products.map((product) => {
 							return (
@@ -47,9 +47,9 @@ const HomeScreen = () => {
 						<Partners />
 						<hr />
 					</Row>
-					 <Row>
+					<Row>
 						<Location id="#contact" />
-					 </Row>
+					</Row>
 				</>
 			)}
 		</>
