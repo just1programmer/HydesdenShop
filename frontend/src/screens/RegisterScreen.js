@@ -13,6 +13,9 @@ const RegisterScreen = () => {
     const [name,setName] = useState("");
     const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState(null);
+	// email validation
+	const [validationError, setValidationError] = useState(null);
+	
 
 	const dispatch = useDispatch();
 	const userRegister = useSelector((state) => state.userRegister);
@@ -23,6 +26,24 @@ const RegisterScreen = () => {
 	const redirect = searchParams.get("redirect");
 
 	const navigate = useNavigate();
+
+
+	function isValidEmail(email) {
+			return /\S+@\S+\.\S+/.test(email);
+	}
+
+
+	const handleChange = (event) => {
+		if (!isValidEmail(event.target.value)) {
+			setValidationError("Emailul este invalid.");
+		} else {
+			setValidationError(null);
+		}
+
+		setEmail(event.target.value);
+	};
+
+
 
 	useEffect(() => {
 		if (userInfo) {
@@ -48,6 +69,7 @@ const RegisterScreen = () => {
 			<h1>Inregistreaza-te</h1>
 			{message && <Message variant="danger">{message}</Message>}
 			{error && <Message variant="danger">{error}</Message>}
+			{validationError && <Message variant="danger">{validationError}</Message>}
 			{loading && <Loader />}
 			<Form onSubmit={submitHandler}>
 				<Form.Group controlId="name">
@@ -65,7 +87,7 @@ const RegisterScreen = () => {
 						type="email"
 						placeholder="Email"
 						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						onChange={handleChange}
 					></Form.Control>
 				</Form.Group>
 				<Form.Group controlId="password">
