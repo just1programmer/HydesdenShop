@@ -18,7 +18,7 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import ContactScreen from './screens/ContactScreen'
 import Location from './components/Location';
 import OrderListScreen from './screens/OrderListScreen';
-
+ 
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -94,6 +94,7 @@ const router = createBrowserRouter([
 		path: "/admin/orderlist",
 		element: <OrderListScreen />,
 	},
+ 
 ]);
 
 function App() {

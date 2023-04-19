@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { listUsers,deleteUser } from "../actions/userActions";
-
+import './UserListScreen.scss'
 
 const UserListScreen = () => {
 	const dispatch = useDispatch();
@@ -70,7 +70,7 @@ const UserListScreen = () => {
 									<td>{user._id}</td>
 									<td>{user.name}</td>
 									<td>
-										<a href={`mailto:${user.email}`}>{user.email}</a>
+										{user.email}
 									</td>
 									<td>
 										{user.isAdmin ? (
@@ -83,11 +83,11 @@ const UserListScreen = () => {
 										)}
 									</td>
 									<td>
-										<Link to={`/admin/user/${user._id}/edit`}>
+										{/* <Link to={`/admin/user/${user._id}/edit`}>
 											<Button variant="light" className="btn-sm">
 												<i className="fas fa-edit"></i>
 											</Button>
-										</Link>
+										</Link> */}
 										<Button
 											variant="danger"
 											className="btn-sm"

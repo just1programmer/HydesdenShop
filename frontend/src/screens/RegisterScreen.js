@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
 import { register } from "../actions/userActions";
+import './RegisterScreen.scss'
 
 const RegisterScreen = () => {
 	const [email, setEmail] = useState("");
@@ -114,8 +115,11 @@ const RegisterScreen = () => {
 			</Form>
 			<Row className="py-3">
 				<Col>
-					Ai deja un cont?{" "}
-					<Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
+					<span className="newClient">Ai deja un cont? </span>
+					<Link
+						to={redirect ? `/login?redirect=${redirect}` : "/login"}
+						className="login"
+					>
 						Logheaza-te
 					</Link>
 				</Col>

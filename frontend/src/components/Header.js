@@ -11,16 +11,13 @@ import "./Header.scss"
 
 const Header = () => {
   const dispatch = useDispatch();
-
+ 
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
-
-
-
  
-
   const logoutHandler = () =>{
 	dispatch(logout())
+ 
   }
 
   return (
@@ -50,7 +47,7 @@ const Header = () => {
 									<NavDropdown.Item href="/profile">Profil</NavDropdown.Item>
 
 									<NavDropdown.Item onClick={logoutHandler}>
-										Logout
+										<Nav.Link >Logout</Nav.Link>
 									</NavDropdown.Item>
 								</NavDropdown>
 							) : (
