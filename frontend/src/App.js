@@ -17,7 +17,7 @@ import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import ContactScreen from './screens/ContactScreen'
 import Location from './components/Location';
-
+import OrderListScreen from './screens/OrderListScreen';
 
 const router = createBrowserRouter([
 	{
@@ -88,6 +88,11 @@ const router = createBrowserRouter([
 	{
 		path: "/location",
 		element: <Location />,
+	},
+
+	{
+		path: "/admin/orderlist",
+		element: <OrderListScreen />,
 	},
 ]);
 

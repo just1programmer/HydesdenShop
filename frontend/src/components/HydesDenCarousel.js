@@ -54,7 +54,7 @@ const HydesDenCarousel = () => {
 			<Carousel.Item>
 				<img src={c7} alt="carousel7" className="image" fluid />
 				<Carousel.Caption className="carousel-caption">
-					Builduri PC custom
+					 Builduri PC custom
 				</Carousel.Caption>
 			</Carousel.Item>
 			<Carousel.Item>

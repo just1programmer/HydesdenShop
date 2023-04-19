@@ -32,7 +32,7 @@ const HomeScreen = () => {
 				<>
 					<Row>
 						<HydesDenCarousel />
-						<h1>Produsele noastre</h1>
+						<h1 style={{color:'orange'}}>Produsele noastre</h1>
 						<hr />
 						{products.map((product) => {
 							return (

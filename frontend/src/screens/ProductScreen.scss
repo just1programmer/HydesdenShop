@@ -1,13 +1,24 @@
 .add-to-cart{
     background-color: rgb(189, 26, 26);
+    font-family: 'Reggae One', cursive;
+    transition: all .5s ease-in;
 }
 
 .dark-btn{
     background-color: black;
     color: white;
+    font-family: 'Reggae One', cursive;
+    transition: all .5s ease-in;
 }
 
 .dark-btn:hover{
-     background-color: rgb(78, 78, 78);
-    color: white;
+     background-color: rgb(243, 239, 239);
+    color: rgb(0, 0, 0);
 }
+
+p,.col{
+    font-family: 'Reggae One', cursive;
+    font-size: medium;
+}
+
+ 

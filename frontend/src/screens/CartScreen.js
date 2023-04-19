@@ -56,7 +56,7 @@ const CartScreen = () => {
 		<Row className="cart-order">
 			<Col md={12}>
 				<h1>Cos de cumparaturi</h1>
-				<Link className="btn btn-light my-3" to="/">
+				<Link className="btn btn-light my-3 btn-reggaefont" to="/">
 					Mergi la pagina principala
 				</Link>
 				{cartItems.length === 0 ? (

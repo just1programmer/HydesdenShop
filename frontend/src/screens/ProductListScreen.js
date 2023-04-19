@@ -81,7 +81,7 @@ const ProductListScreen = () => {
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Table striped bordered hovered responsive className="table-sm">
+				<Table   variant="dark" bordered hovered responsive className="table-sm">
 					<thead>
 						<tr>
 							<th>POZA</th>

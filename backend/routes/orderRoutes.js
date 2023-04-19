@@ -58,6 +58,23 @@ router.get("/myorders",protect.protect, asyncHandler(async (req, res) => {
 
 
 
+//  @description Primim toate comenzile!
+//  @route GET /api/orders
+//  @access  Private/Admin
+
+router.get("/",protect.protect,protect.admin, asyncHandler(async (req, res) => {
+	
+	const orders = await Order.find({}).populate('user','id name')
+	res.json(orders)
+
+}));
+
+
+
+
+
+
+
 
 
 //  @description Request pentru a primi o comanda - prin ID 
@@ -106,6 +123,8 @@ router.put("/:id/pay",protect.protect, asyncHandler(async (req, res) => {
 	}
 
 }));
+
+
 
 
 
