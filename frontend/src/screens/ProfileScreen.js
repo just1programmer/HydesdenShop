@@ -13,7 +13,8 @@ const ProfileScreen = () => {
 	const [name, setName] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [message, setMessage] = useState(null);
-
+	const [validationError, setValidationError] = useState(null);
+	
 	const dispatch = useDispatch();
 
 	const userDetails = useSelector((state) => state.userDetails);
@@ -30,6 +31,23 @@ const ProfileScreen = () => {
 
 	const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
 	const { success } = userUpdateProfile;
+
+
+	function isValidEmail(email) {
+		return /\S+@\S+\.\S+/.test(email);
+	}
+
+	const handleChange = (event) => {
+		if (!isValidEmail(event.target.value)) {
+			setValidationError("Emailul este invalid.");
+		} else {
+			setValidationError(null);
+		}
+
+		setEmail(event.target.value);
+	};
+
+
 
 	useEffect(() => {
 		if (!userInfo) {
@@ -72,6 +90,9 @@ const ProfileScreen = () => {
 				{success && (
 					<Message variant="success">Profilul a fost updatat</Message>
 				)}
+				{validationError && (
+					<Message variant="danger">{validationError}</Message>
+				)}
 				{loading && <Loader />}
 				<Form onSubmit={submitHandler}>
 					<Form.Group controlId="name">
@@ -89,7 +110,7 @@ const ProfileScreen = () => {
 							type="email"
 							placeholder="Email"
 							value={email}
-							onChange={(e) => setEmail(e.target.value)}
+							onChange={handleChange}
 						></Form.Control>
 					</Form.Group>
 					<Form.Group controlId="password">
@@ -137,13 +158,30 @@ const ProfileScreen = () => {
 							{orders.map((order) => (
 								<tr key={order._id}>
 									<td>{order._id}</td>
-									<td>{order.createdAt.substring(0,10)}</td>
+									<td>{order.createdAt.substring(0, 10)}</td>
 									<td>{order.totalPrice}</td>
-									<td>{order.isPaid ? order.paidAt.substring(0,10) : ( <i className="fas fa-times" style={{color:'red'}}></i>)}</td>
-									<td>{order.isDelivered? order.deliveredAt.substring(0,10):(<i className="fas fa-times" style={{color:'red'}}></i>)}</td>
-									<td> <Link to={`/order/${order._id}`}>
-											<Button variant='light' className="btn-sm">Detalii</Button>
-										</Link></td>
+									<td>
+										{order.isPaid ? (
+											order.paidAt.substring(0, 10)
+										) : (
+											<i className="fas fa-times" style={{ color: "red" }}></i>
+										)}
+									</td>
+									<td>
+										{order.isDelivered ? (
+											order.deliveredAt.substring(0, 10)
+										) : (
+											<i className="fas fa-times" style={{ color: "red" }}></i>
+										)}
+									</td>
+									<td>
+										{" "}
+										<Link to={`/order/${order._id}`}>
+											<Button variant="light" className="btn-sm">
+												Detalii
+											</Button>
+										</Link>
+									</td>
 								</tr>
 							))}
 						</tbody>
