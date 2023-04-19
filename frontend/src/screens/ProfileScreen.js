@@ -150,7 +150,7 @@ const ProfileScreen = () => {
 								<th>DATA</th>
 								<th>TOTAL</th>
 								<th>STAREA PLATII</th>
-								<th>LIVRAT</th>
+								<th>EXPEDIAT</th>
 								<th></th>
 							</tr>
 						</thead>

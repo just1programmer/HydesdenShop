@@ -71,11 +71,11 @@ const OrderScreen = () => {
 
 							{order.isDelivered ? (
 								<Message variant="success">
-									Livrata la data de : {order.deliveredAt}
+									Expediata la data de : {order.deliveredAt}
 								</Message>
 							) : (
 								<Message variant="danger">
-									Comanda nu a fost inca livrata
+									Comanda nu a fost inca expediata
 								</Message>
 							)}
 						</ListGroup.Item>
