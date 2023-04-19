@@ -113,6 +113,8 @@ export const listProductDetails = (id) => async (dispatch) => {
 				type: PRODUCT_CREATE_SUCCESS,
 				payload:data
 			});
+
+			
 		} catch (error) {
 			dispatch({
 				type: PRODUCT_CREATE_FAIL,

@@ -10,13 +10,13 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { login } from '../actions/userActions';
 import FormContainer from '../components/FormContainer'
-
+import './LoginScreen.scss'
 const LoginScreen = () => {
 
 
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
-
+  const [validationError, setValidationError] = useState(null);
   const dispatch = useDispatch();
   const userLogin = useSelector(state => state.userLogin);
 
@@ -39,6 +39,20 @@ const LoginScreen = () => {
     e.preventDefault()
     dispatch(login(email,password))
   }
+  
+	function isValidEmail(email) {
+		return /\S+@\S+\.\S+/.test(email);
+	}
+
+	const handleChange = (event) => {
+		if (!isValidEmail(event.target.value)) {
+			setValidationError("Emailul este invalid.");
+		} else {
+			setValidationError(null);
+		}
+
+		setEmail(event.target.value);
+	};
 
   
   if(error){
@@ -47,9 +61,10 @@ const LoginScreen = () => {
 
   return (
 		<FormContainer>
-			<h1>Sign in</h1>
-      {error && <Message variant='danger'>{error}</Message>}
-      {loading && <Loader />}
+			<h1>Logheaza-te</h1>
+			{error && <Message variant="danger">{error}</Message>}
+			{validationError && <Message variant="danger">{validationError}</Message>}
+			{loading && <Loader />}
 			<Form onSubmit={submitHandler}>
 				<Form.Group controlId="email">
 					<Form.Label>Email</Form.Label>
@@ -57,7 +72,7 @@ const LoginScreen = () => {
 						type="email"
 						placeholder="Introduceti emailul"
 						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						onChange={handleChange}
 					></Form.Control>
 				</Form.Group>
 				<Form.Group controlId="password">
@@ -69,13 +84,18 @@ const LoginScreen = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					></Form.Control>
 				</Form.Group>
-        <Button type="submit" variant='primary' className='my-4'>Sign In</Button>
+				<Button type="submit" variant="primary" className="my-4">
+					Sign In
+				</Button>
 			</Form>
-      <Row className='py-3'>
-        <Col>
-        Client Nou? <Link to={redirect ? `/register?redirect=${redirect}`:'/register'}>Inregistreaza-te</Link>
-        </Col>
-      </Row>
+			<Row className="py-3">
+				<Col>
+					<span className="newClient">Client Nou?</span>{" "}
+					<Link to={redirect ? `/register?redirect=${redirect}` : "/register"} className='register'>
+						Inregistreaza-te
+					</Link>
+				</Col>
+			</Row>
 		</FormContainer>
 	);
 }

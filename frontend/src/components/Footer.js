@@ -3,6 +3,7 @@ import { Container,Row,Col,Nav,Button } from "react-bootstrap";
 import './Footer.scss' 
 
 const Footer = () => {
+	
   return (
 		<footer>
 			<Container>
@@ -13,40 +14,40 @@ const Footer = () => {
 				</Row>
 				<Row>
 					<div className="text-center">
-						<a href="#">
+						<a href="#" className="icon">
 							<i
-								class="fab fa-whatsapp"
-								style={{ color: "white", fontSize: "x-large" }}
+								class="fab fa-whatsapp "
+								style={{ color: "rgb(243, 151, 102)", fontSize: "x-large" }}
 							></i>
 						</a>
-						<a href="#">
+						<a href="#" className="icon">
 							{" "}
 							<i
-								class="fa-brands fa-facebook-f"
+								class="fa-brands fa-facebook-f  "
 								style={{
-									color: "white",
+									color: "rgb(243, 151, 102)",
 									fontSize: "x-large",
 									marginLeft: ".5rem",
 								}}
 							></i>
 						</a>
-						<a href="">
+						<a href="#" className="icon">
 							{" "}
 							<i
-								class="fa-brands fa-tiktok"
+								class="fa-brands fa-tiktok  "
 								style={{
-									color: "white",
+									color: "rgb(243, 151, 102)",
 									fontSize: "x-large",
 									marginLeft: ".5rem",
 								}}
 							></i>
 						</a>
-						<a href="">
+						<a href="#" className="icon">
 							{" "}
 							<i
-								class="fa-brands fa-instagram"
+								class="fa-brands fa-instagram  "
 								style={{
-									color: "white",
+									color: "rgb(243, 151, 102)",
 									fontSize: "x-large",
 									marginLeft: ".5rem",
 								}}

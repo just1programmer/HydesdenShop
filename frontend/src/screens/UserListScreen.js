@@ -48,8 +48,8 @@ const UserListScreen = () => {
 					<Message variant="danger">{error}</Message>
 				) : (
 					<Table
-						striped
-						variant="secondary"
+						 
+						variant="dark"
 						bordered
 						hovered
 						responsive
