@@ -113,14 +113,13 @@ const OrderScreen = () => {
 														rounded
 													/>
 												</Col>
-												<Col>
+												<Col md={7}>
 													<LinkContainer to={`/product/${item.product}`}>
 														<NavLink>{item.name}</NavLink>
 													</LinkContainer>
 												</Col>
-												<Col md={4}>
-													{item.qty} x Lei{item.price} = Lei
-													{item.qty * item.price}
+												<Col md={4} style={{fontFamily:'Reggae One',fontSize:'small'}} className='text-end'>
+													{item.qty} x Lei {item.price} = Lei {item.qty * item.price}
 												</Col>
 											</Row>
 										</ListGroup.Item>

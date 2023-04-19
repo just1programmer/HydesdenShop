@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../components/FormContainer";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { savePaymentMethod } from "../actions/cartActions";
-
+import Message from "../components/Message";
 const PaymentScreen = () => {
 
     
@@ -20,8 +20,8 @@ const PaymentScreen = () => {
         navigate('/shipping')
     }
 
-	const [paymentMethod, setPaymentMethod] = useState('PayPal');
-
+	const [paymentMethod, setPaymentMethod] = useState('');
+	const [error,setError] = useState('');
 	const submitHandler = (e) => {
 		e.preventDefault();
 		dispatch(
@@ -29,40 +29,35 @@ const PaymentScreen = () => {
 				paymentMethod
 			})
 		);
-		navigate("/placeorder");
+		if(paymentMethod===undefined || paymentMethod===''){
+			setError('Trebuie sa selectezi o metoda de plata!')
+		}else{
+			navigate("/placeorder");
+		}
 	};
 
 	return (
 		<FormContainer>
 			<CheckoutSteps step1 step2 step3 />
 			<h1>Plata</h1>
+			{error && <Message variant='danger'>{error}</Message>}
 			<Form onSubmit={submitHandler}>
 				<Form.Group>
 					<Form.Label as="legend">Selecteaza metoda de plata</Form.Label>
 
 					<Col>
-						{/* <Form.Check
+						<Form.Check
 							type="radio"
 							label="PayPal sau Card"
 							id="PayPal"
 							name="paymentMethod"
 							value="PayPal"
-							checked
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						></Form.Check>
 						<Form.Check
 							type="radio"
-							label="Stripe"
-							id="Stripe"
-							name="paymentMethod"
-							value="Stripe"
-							onChange={(e) => setPaymentMethod(e.target.value)}
-						></Form.Check> */}
-						<Form.Check
-							type="radio"
 							label="Numerar"
 							id="Cash"
-							checked={true}
 							name="paymentMethod"
 							value="Cash"
 							onChange={(e) => setPaymentMethod(e.target.value)}

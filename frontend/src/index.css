@@ -48,6 +48,8 @@ main {
 
  }
 
+
+
  a:visited{
   color: rgb(0, 0, 0);
  } 
@@ -105,13 +107,15 @@ table{
 th{
   font-family: 'Reggae One', cursive;
   font-size: x-large;
-  color: rgb(227, 151, 35);
+  color: rgb(241, 239, 239);
 }
 
 td{
   font-size: small;
   font-weight: bold;
-  color: rgb(219, 18, 98);
+  font-family: 'Reggae One', cursive;
+  color: rgb(255, 152, 97);
+ 
 }
 /* ================================ */
 
