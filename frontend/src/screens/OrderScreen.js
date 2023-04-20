@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import {PayPalButton} from 'react-paypal-button-v2'
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
 	Button,
@@ -14,34 +16,73 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from '../components/Loader'
 import { LinkContainer } from "react-router-bootstrap";
-import { getOrderDetails } from "../actions/orderActions";
+import { getOrderDetails, payOrder } from "../actions/orderActions";
+import { ORDER_PAY_RESET } from "../constants/orderConstants";
 
 const OrderScreen = () => {
-
+// Pentru butoanele de paypal folosim react-paypal-button-v2
     let {id}  = useParams();
-	console.log(id)
+	// asta e pentru Paypal
+	const [sdkReady,setSdkReady] = useState(false)
+	const currency = 'RON'
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	
+	const leiToeuroRate = 0.2;
 	const orderDetails = useSelector((state) => state.orderDetails);
 	const { order, loading, error } = orderDetails;
 
+	const orderPay= useSelector((state) => state.orderPay);
+	const { loading:loadingPay, success: successPay } = orderPay;
 
 	if(!loading){
 	order.itemsPrice = order.orderItems.reduce(
 		(acc, item) => acc + item.price * item.qty,
 		0
 	);
+}
+
+	useEffect(() => {
+		const addPayPalScript = async () =>{
+			const { data: clientId } = await axios.get("/api/config/paypal");
+			// cream dinamic un script :)
+			const script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&currency=EUR`;
+			script.async = true;
+	 
+			//  o sa avem state pentru paypal :) ca sa stim cand putem folosi paypal
+			script.onload = () => {
+				// cand scriptul a fost incarcat- marcam sdk ready - adica sciptul poate fi folosit :)
+				setSdkReady(true);
+			};
+			// Dupa ce am incarcat scriptul de pe server , il adaugam in frontend in body
+
+			document.body.appendChild(script)
+			// ca si rezumat la toata functia addPayPalScript -- primim din backend un client Secret - un ID . Apoi folosim acest ID pentru a crea un script dinamic. apoi dupa ce am creat scriptul dinamic,  il incarcam in frontend, in body si e gata sa fie folosit. 
+		}
+
+
+		if(!order || successPay){
+			dispatch({type:ORDER_PAY_RESET})
+	        dispatch(getOrderDetails(id));
+		} else if(!order.isPaid){
+			// Daca comanda nu e platita, adaugam scriptul de paypal :) 
+			if(!window.paypal){
+				addPayPalScript()
+			}else{
+				setSdkReady(true)
+			}
+		}
+	}, [successPay,navigate,id,order]);
+
+	
+
+	const successPaymentHandler = (paymentResult) =>{
+		console.log(paymentResult)
+		dispatch(payOrder(id,paymentResult))
 	}
 
 
-	useEffect(() => {
-	
-        dispatch(getOrderDetails(id))
-
-	}, [navigate,id]);
-
- 
 
 	return loading ? (
 		<Loader />
@@ -159,6 +200,12 @@ const OrderScreen = () => {
 									<Col>Lei {Number(order.totalPrice).toFixed(2)}</Col>
 								</Row>
 							</ListGroup.Item>
+							{!order.isPaid && (<ListGroup.Item>
+								{loadingPay && <Loader/>}
+								{!sdkReady ? <Loader/> : (
+									<PayPalButton amount={Number(order.totalPrice*leiToeuroRate).toFixed(2)}  onSuccess={successPaymentHandler} currency='EUR'/>
+								)}
+							</ListGroup.Item>)}
 						</ListGroup>
 					</Card>
 				</Col>

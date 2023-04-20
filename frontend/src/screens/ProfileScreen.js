@@ -14,7 +14,7 @@ const ProfileScreen = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [message, setMessage] = useState(null);
 	const [validationError, setValidationError] = useState(null);
-	
+
 	const dispatch = useDispatch();
 
 	const userDetails = useSelector((state) => state.userDetails);
@@ -143,7 +143,7 @@ const ProfileScreen = () => {
 				) : errorOrders ? (
 					<Message variant="danger">{errorOrders}</Message>
 				) : (
-					<Table   variant="dark" bordered hover responsive className="table-sm">
+					<Table variant="dark" bordered hover responsive className="table-sm">
 						<thead>
 							<tr>
 								<th>ID</th>
@@ -161,11 +161,15 @@ const ProfileScreen = () => {
 									<td>{order.createdAt.substring(0, 10)}</td>
 									<td>{order.totalPrice}</td>
 									<td>
-										{order.isPaid ? (
-											order.paidAt.substring(0, 10)
-										) : (
-											<i className="fas fa-times" style={{ color: "red" }}></i>
-										)}
+											{order.isPaid ? (
+											  	order.paidAt.substring(0, 20)	
+											) : (
+												<i
+													className="fas fa-times"
+													style={{ color: "red" }}
+												></i>
+											)}
+									
 									</td>
 									<td>
 										{order.isDelivered ? (
