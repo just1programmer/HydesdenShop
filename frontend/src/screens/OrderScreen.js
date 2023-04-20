@@ -92,7 +92,7 @@ const OrderScreen = () => {
 	}
 
 	const deliverHandler = () =>{
-		// daca nu merge , incerc cu order
+	 
 		dispatch(deliverOrder(id))
 		dispatch(getOrderDetails(id))
 	}
