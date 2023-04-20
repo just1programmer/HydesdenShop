@@ -16,8 +16,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from '../components/Loader'
 import { LinkContainer } from "react-router-bootstrap";
-import { getOrderDetails, payOrder } from "../actions/orderActions";
-import { ORDER_PAY_RESET } from "../constants/orderConstants";
+import { getOrderDetails, payOrder,deliverOrder } from "../actions/orderActions";
+import { ORDER_PAY_RESET,ORDER_DELIVER_RESET } from "../constants/orderConstants";
 
 const OrderScreen = () => {
 // Pentru butoanele de paypal folosim react-paypal-button-v2
@@ -33,6 +33,14 @@ const OrderScreen = () => {
 
 	const orderPay= useSelector((state) => state.orderPay);
 	const { loading:loadingPay, success: successPay } = orderPay;
+
+
+	const orderDeliver = useSelector((state) => state.orderDeliver);
+	const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
+
+
+		const userLogin = useSelector((state) => state.userLogin);
+		const { userInfo} = userLogin;
 
 	if(!loading){
 	order.itemsPrice = order.orderItems.reduce(
@@ -62,8 +70,9 @@ const OrderScreen = () => {
 		}
 
 
-		if(!order || successPay){
+		if(!order || successPay || successDeliver){
 			dispatch({type:ORDER_PAY_RESET})
+			dispatch({type:ORDER_DELIVER_RESET})
 	        dispatch(getOrderDetails(id));
 		} else if(!order.isPaid){
 			// Daca comanda nu e platita, adaugam scriptul de paypal :) 
@@ -73,7 +82,7 @@ const OrderScreen = () => {
 				setSdkReady(true)
 			}
 		}
-	}, [successPay,navigate,id,order]);
+	}, [successPay,navigate,id,order,successDeliver]);
 
 	
 
@@ -82,6 +91,11 @@ const OrderScreen = () => {
 		dispatch(payOrder(id,paymentResult))
 	}
 
+	const deliverHandler = () =>{
+		// daca nu merge , incerc cu order
+		dispatch(deliverOrder(id))
+		dispatch(getOrderDetails(id))
+	}
 
 
 	return loading ? (
@@ -205,6 +219,10 @@ const OrderScreen = () => {
 								{!sdkReady ? <Loader/> : (
 									<PayPalButton amount={Number(order.totalPrice*leiToeuroRate).toFixed(2)}  onSuccess={successPaymentHandler} currency='EUR'/>
 								)}
+							</ListGroup.Item>)}
+							{loadingDeliver && <Loader/>}
+							{userInfo.isAdmin && order.isPaid && !order.isDelivered && (<ListGroup.Item>
+								<Button type="button" className="btn btn-block" onClick={deliverHandler}>Marcheaza ca Expediat</Button>
 							</ListGroup.Item>)}
 						</ListGroup>
 					</Card>

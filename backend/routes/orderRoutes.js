@@ -124,6 +124,26 @@ router.put("/:id/pay",protect.protect, asyncHandler(async (req, res) => {
 
 }));
 
+//  @description Updatare expediere comanda
+//  @route PUT /api/orders/:id/deliver
+//  @access  Private/Admin
+
+router.put("/:id/deliver",protect.protect, asyncHandler(async (req, res) => {
+	
+	const order = await Order.findById(req.params.id)
+
+	if(order){
+		order.isDelivered= true
+		order.deliveredAt = Date.now();
+		const updatedOrder = await order.save();
+		res.json(updatedOrder)
+	}else{
+		res.status(404)
+		throw new Error('Order not found')
+	}
+}));
+
+
 
 
 

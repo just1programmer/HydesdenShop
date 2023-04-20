@@ -2,6 +2,9 @@ import {
 	ORDER_CREATE_FAIL,
 	ORDER_CREATE_REQUEST,
 	ORDER_CREATE_SUCCESS, 
+	ORDER_DELIVER_FAIL, 
+	ORDER_DELIVER_REQUEST, 
+	ORDER_DELIVER_SUCCESS, 
 	ORDER_DETAILS_FAIL,
 	ORDER_DETAILS_REQUEST,
 	ORDER_DETAILS_SUCCESS,
@@ -123,6 +126,43 @@ export const payOrder = (orderId,paymentResult) => async (dispatch, getState) =>
 		});
 	}
 };
+
+export const deliverOrder =
+	(orderId) => (dispatch, getState) => {
+		try {
+			dispatch({
+				type: ORDER_DELIVER_REQUEST,
+			});
+
+			const {
+				userLogin: { userInfo },
+			} = getState();
+
+			const config = {
+				headers: {
+					"Content-Type": "application/json",
+					// pasam tokenul
+					Authorization: `Bearer ${userInfo.token}`,
+				},
+			};
+
+			const { data } = axios.put(`/api/orders/${orderId}/deliver`,{},config);
+
+			dispatch({
+				type: ORDER_DELIVER_SUCCESS,
+				payload: data,
+			});
+		} catch (error) {
+			dispatch({
+				type: ORDER_DELIVER_FAIL,
+				payload:
+					error.response && error.response.data.message
+						? error.response.data.message
+						: error.message,
+			});
+		}
+	};
+
 
 
 export const listMyOrders =
