@@ -107,6 +107,11 @@ const router = createBrowserRouter([
 		path: "/benefits",
 		element: <BenefitsScreen />,
 	},
+
+	{
+		path: "/search/:keyword",
+		element: <HomeScreen />,
+	},
 ]);
 
 function App() {
