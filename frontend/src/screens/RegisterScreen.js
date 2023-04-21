@@ -17,6 +17,7 @@ const RegisterScreen = () => {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [message, setMessage] = useState(null);
 	const [sentMessage, setSentMessage] = useState(false);
+	const [readyToSendEmail,setReadyToSendEmail] = useState(false);
 	// email validation
 	const [validationError, setValidationError] = useState(null);
 	const form = useRef();
@@ -51,7 +52,7 @@ const RegisterScreen = () => {
 
 	useEffect(() => {
 		if (userInfo) {
-			navigate("/");
+			navigate("/home");
 		}
 	}, [navigate, userInfo, redirect]);
 
@@ -60,7 +61,8 @@ const RegisterScreen = () => {
 	
 	const sendEmail = (e) => {
 
-		emailjs
+		if(!validationError){
+			emailjs
 			.sendForm(
 				"service_q44b265",
 				"template_inregistrare",
@@ -75,24 +77,33 @@ const RegisterScreen = () => {
 					console.log(error.text);
 				}
 			);
-		setSentMessage(true);
+		}
+		
+		
 	};
 
 
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-        if(password !== confirmPassword){
+        if(password !== confirmPassword ){
             setMessage('Parolele nu sunt aceleasi ')
-        } else{
-            dispatch(register(name,email,password))
-			sendEmail();
         }
+		else if(validationError != null){
+			setMessage("Email invalid");
+		} else{
+	
+	
+			dispatch(register(name, email, password))
+			setPhone('')
+			setMessage('');
+			setPassword('');
+			setConfirmPassword('');
+			setName('');
+        }	
 	};
 
-	if (error) {
-		console.log(error);
-	}
+
 
 	return (
 		<div className="contact-form-container">
@@ -100,7 +111,8 @@ const RegisterScreen = () => {
 			 Inregistreaza-te  
 		</h2>
 		{error && <Message variant="danger">{error}</Message>}
-		{sentMessage && (
+		{message && <Message variant='danger'>{message}</Message>}
+		{!error && sentMessage && (
 			<Message variant="success">Inregistrarea a fost facuta cu success</Message>
 		)}
 		{loading && <Loader />}
@@ -114,9 +126,10 @@ const RegisterScreen = () => {
 					value={name}
 					name="fullName"
 					onChange={(e) => setName(e.target.value)}
+					required
 				></input>
 				<label>Email</label>
-				<input type="email" placeholder="Email" name="email" value={email} onChange={handleChange}></input>
+				<input type="email" placeholder="Email" name="email" value={email} onChange={handleChange} required></input>
 				<label>Telefon</label>
 				<input
 					type="text"
@@ -124,6 +137,7 @@ const RegisterScreen = () => {
 					name="phone"
 					value={phone}
 					onChange={(e) => setPhone(e.target.value)}
+					required
 				></input>
 			 
 					<label>Parola</label>
@@ -133,6 +147,7 @@ const RegisterScreen = () => {
 						value={password}
 						name="password"
 						onChange={(e) => setPassword(e.target.value)}
+						required
 					></input>
 				 
 				 
@@ -142,6 +157,7 @@ const RegisterScreen = () => {
 						placeholder="Confirmati Parola"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
+						required
 					></input>
 				<Button type="submit" variant="primary" className="my-4">
 					Inregistreaza-te

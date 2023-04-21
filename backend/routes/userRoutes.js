@@ -160,8 +160,8 @@ router.post('/', asyncHandler(async(req,res)=>{
     const userExists = await User.findOne({email})
 
     if(userExists){
-        res.status(400)
-        throw new Error('Userul exista deja')
+        res.status(400).json({message:'Un user cu acest mail exista deja'})
+   
     }
 
     const user = await User.create({

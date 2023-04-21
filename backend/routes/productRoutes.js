@@ -103,4 +103,77 @@ router.put("/:id", asyncHandler(async(req, res) => {
 
 
 
+//  @description Request pentru a crea un nou review
+//  @route PUT /api/products/:id/reviews
+//  @access  Private
+router.post("/:id/reviews", asyncHandler(async(req, res) => {
+    
+    const {
+        rating,comment
+    } = req.body
+ 
+    console.log(typeof(rating))
+    const product = await Product.findById(req.params.id)
+    // DANGER ---> NU MERGE req.params._id !! folosesc .id in loc !!! 
+    if(product){
+
+        if(res.status ===500){
+            res.json({message:'Produsul are deja un review de la tine'})
+        }
+        // daca e problema, foloses id in loc de _id
+        const alreadyReviewed = product.reviews.find(review => review.user.toString() === req.body.user.toString())
+        if(alreadyReviewed){
+            res.status(400)
+            throw new Error('Product already reviewed');
+        }
+        const review = {
+            name: req.body.name,
+            rating: Number(rating),
+            comment,
+            user:req.body.user
+        
+        }
+
+        product.reviews.push(review)
+        product.numReviews = product.reviews.length;
+
+        console.log(product.reviews)
+        
+        let sumOfRating = 0;
+
+        product.reviews.forEach(review => {
+            sumOfRating += review.rating
+        });
+
+        console.log(sumOfRating)
+
+        product.rating = sumOfRating/product.reviews.length;
+        // product.rating =
+		// 			product.reviews.reduce((acc, item) => {
+		// 				console.log("ITEM : ", item);
+		// 				console.log("ACC : ", acc);
+		// 				Number(item.rating) + Number(acc);
+		// 			}, 0) / product.reviews.length;
+
+        
+        
+        
+   
+        // console.log(product.rating)
+        await product.save();
+        res.status(201).json({
+            message: 'Review added'
+        })
+    }else{
+        res.status(404)
+        throw new Error({
+            message:'Trebuie sa fii logat ca sa poti lasa un review'
+        })
+    }
+  
+}));
+
+
+
+
 module.exports = router;
