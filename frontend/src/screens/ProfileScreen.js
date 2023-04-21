@@ -160,9 +160,9 @@ const ProfileScreen = () => {
 									<td>{order._id}</td>
 									<td>{order.createdAt.substring(0, 10)}</td>
 									<td>{order.totalPrice}</td>
-									<td>
+									<td style={order.isPaid?{color:'green'}:{color:'red'}}>
 											{order.isPaid ? (
-											  	order.paidAt.substring(0, 20)	
+											  	order.paidAt.substring(0,19).replace('T',' ').replace('Z',' ')	
 											) : (
 												<i
 													className="fas fa-times"

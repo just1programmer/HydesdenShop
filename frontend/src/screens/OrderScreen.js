@@ -142,7 +142,7 @@ const OrderScreen = () => {
 							</p>
 							{order.isPaid ? (
 								<Message variant="success">
-									Platita la data de : {order.paidAt}
+									Platita la data de : {order.paidAt.substring(0,19).replace('T',' ').replace('Z',' ')}
 								</Message>
 							) : (
 								<Message variant="danger">

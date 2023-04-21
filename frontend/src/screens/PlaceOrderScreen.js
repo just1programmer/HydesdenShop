@@ -38,7 +38,9 @@ const PlaceOrderScreen = () => {
 	useEffect(()=>{
 		if(success){
 			console.log(order._id);
+			localStorage.removeItem("cartItems");
 			navigate(`/order/${order._id}`)
+
 		}
 	},[dispatch,success,navigate])
 
