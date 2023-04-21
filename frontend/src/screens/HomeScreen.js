@@ -8,6 +8,7 @@ import { listProducts } from '../actions/productActions'
 import HydesDenCarousel from '../components/HydesDenCarousel'
 import Location from '../components/Location' 
 import Partners from '../components/Partners'
+import Benefits from '../components/Benefits'
 
 const HomeScreen = () => {
  
@@ -32,8 +33,19 @@ const HomeScreen = () => {
 				<>
 					<Row>
 						<HydesDenCarousel />
-						<h1 style={{ color: "rgb(255, 125, 60)", textDecoration:'underline', textDecorationThickness:'4px',textUnderlineOffset:'20px' }}>Produsele noastre</h1>
+						<Benefits />
+						<h1
+							style={{
+								color: "rgb(255, 125, 60)",
+								textDecoration: "underline",
+								textDecorationThickness: "4px",
+								textUnderlineOffset: "20px",
+							}}
+						>
+							Produsele noastre
+						</h1>
 						<hr />
+
 						{products.map((product) => {
 							return (
 								<Col key={product._id} sm={12} md={6} lg={4} xl={3}>

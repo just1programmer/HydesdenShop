@@ -47,7 +47,7 @@ const Header = () => {
 									<NavDropdown.Item href="/profile">Profil</NavDropdown.Item>
 
 									<NavDropdown.Item onClick={logoutHandler}>
-										<Nav.Link >Logout</Nav.Link>
+										<Nav.Link>Logout</Nav.Link>
 									</NavDropdown.Item>
 								</NavDropdown>
 							) : (
@@ -70,6 +70,9 @@ const Header = () => {
 									</NavDropdown.Item>
 									<NavDropdown.Item href="/admin/orderlist">
 										Comenzi
+									</NavDropdown.Item>
+									<NavDropdown.Item href="/admin/statistics">
+										Statistici
 									</NavDropdown.Item>
 								</NavDropdown>
 							)}

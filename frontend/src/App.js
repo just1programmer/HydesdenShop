@@ -19,10 +19,10 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import ContactScreen from './screens/ContactScreen'
 import Location from './components/Location';
 import OrderListScreen from './screens/OrderListScreen';
-
+import BenefitsScreen from './screens/BenefitsScreen';
+import StatisticsScreen from './screens/StatisticsScreen';
 
 const router = createBrowserRouter([
-
 	{
 		path: "/home",
 		element: <HomeScreen />,
@@ -96,6 +96,16 @@ const router = createBrowserRouter([
 	{
 		path: "/admin/orderlist",
 		element: <OrderListScreen />,
+	},
+
+	{
+		path: "/admin/statistics",
+		element: <StatisticsScreen />,
+	},
+
+	{
+		path: "/benefits",
+		element: <BenefitsScreen />,
 	},
 ]);
 
