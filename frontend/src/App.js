@@ -1,5 +1,6 @@
 import {Container} from 'react-bootstrap'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
+import SplitScreenSelection from './screens/SplitScreenSelection';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from './screens/HomeScreen';
@@ -18,10 +19,12 @@ import ProductEditScreen from './screens/ProductEditScreen';
 import ContactScreen from './screens/ContactScreen'
 import Location from './components/Location';
 import OrderListScreen from './screens/OrderListScreen';
- 
+
+
 const router = createBrowserRouter([
+
 	{
-		path: "/",
+		path: "/home",
 		element: <HomeScreen />,
 	},
 
@@ -94,19 +97,26 @@ const router = createBrowserRouter([
 		path: "/admin/orderlist",
 		element: <OrderListScreen />,
 	},
- 
 ]);
 
 function App() {
+
+	
   return (
 		<>
-			<Header />
-			<main className="py-3">
-				<Container id="header">
-					<RouterProvider router={router} />
-				</Container>
-			</main>
-			<Footer />
+			{window.location.href === "http://localhost:3000/" ? (
+				<SplitScreenSelection />
+			) : (
+				<>
+					<Header />
+					<main className="py-3">
+						<Container id="header">
+							<RouterProvider router={router} />
+						</Container>
+					</main>
+					<Footer />
+				</>
+			)}
 		</>
 	);
 }
