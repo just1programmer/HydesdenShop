@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react' 
 import './SplitScreenSelection.scss'
 import shopClip from './shopClip.mp4'
+import gamingClub from './gamingClub.mp4'
 import { Link } from 'react-router-dom'
 
 
@@ -41,7 +42,7 @@ const SplitScreenSelection = () => {
 
 				<div className="right-screen">
 					<video
-						src={shopClip}
+						src={gamingClub}
 						onMouseOver={playMovie}
 						onMouseOut={stopMovie}
 						loop
