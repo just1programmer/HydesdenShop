@@ -25,7 +25,7 @@ const ProductEditScreen = ({ match, history }) => {
 	const navigate = useNavigate();
 	const productDetails = useSelector((state) => state.productDetails);
 	const { loading, error, product } = productDetails;
-
+	console.log(product)
 	const productUpdate = useSelector((state) => state.productUpdate);
 	const {
 		loading: loadingUpdate,
@@ -177,6 +177,7 @@ const ProductEditScreen = ({ match, history }) => {
 						<Form.Group controlId="description">
 							<Form.Label>Description</Form.Label>
 							<Form.Control
+								as='textarea'
 								type="text"
 								placeholder="Enter description"
 								value={description}

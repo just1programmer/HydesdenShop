@@ -55,16 +55,28 @@ router.delete("/:id", asyncHandler(async(req, res) => {
 //  @route POST /api/products
 //  @access  Private/Admin
 router.post("/", asyncHandler(async(req, res) => {
-    const product = new Product({
-        name: 'Nume produs',
-        price: 0,
-        image: '/images/sample.jpg',
-        brand: 'Nume Brand',
-        category: 'Nume categorie',
-        countInStock: 0,
-        numReviews: 0,
-        description: 'Descriere...'
-    })
+     let product ;
+     if (product) {
+				product.name = name;
+				product.price = price;
+				product.description = description;
+				product.image = image;
+				product.brand = brand;
+				product.category = category;
+				product.countInStock = countInStock;
+			}else{
+                 product = new Product({
+									name: "Nume produs",
+									price: 0,
+									image: "/images/sample.jpg",
+									brand: "Nume Brand",
+									category: "Nume categorie",
+									countInStock: 0,
+									numReviews: 0,
+									description: "Descriere...",
+								});
+            }
+    
 
     const createdProduct = await product.save();
     res.status(201).json(createdProduct)
