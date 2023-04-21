@@ -21,6 +21,7 @@ import Location from './components/Location';
 import OrderListScreen from './screens/OrderListScreen';
 import BenefitsScreen from './screens/BenefitsScreen';
 import StatisticsScreen from './screens/StatisticsScreen';
+import CategoriesScreen from './screens/CategoriesScreen';
 
 const router = createBrowserRouter([
 	{
@@ -111,6 +112,11 @@ const router = createBrowserRouter([
 	{
 		path: "/search/:keyword",
 		element: <HomeScreen />,
+	},
+
+	{
+		path: "/categories",
+		element: <CategoriesScreen />,
 	},
 ]);
 

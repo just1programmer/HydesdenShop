@@ -1,0 +1,86 @@
+.category{
+    background-color: azure;
+    position: relative;
+    display: flex;
+    height: 300px;
+    margin: 2.5rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px white;
+    transition: all .5s ease;
+    filter: grayscale(1);
+        &:hover{
+           filter: grayscale(0);
+           transform: scale(1.1);
+           box-shadow: 0px 0px 20px rgb(232, 18, 111);
+        }
+
+    &.casti{
+        background-image: url('./820\ lei\ Casti\ gaming\ wireless\ Logitech\ G733\,.webp');
+        background-size: contain;
+        object-fit: scale-down;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    &.monitoare{
+        background-image: url('2300\ leiMonitor\ Gaming\ Curbat\ LED\ VA\ Samsung\ Odyssey\,\ 34.webp');
+        background-size: contain;
+        object-fit: scale-down;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+        &.mouse{
+        background-image: url('500\ lei\ Logitech\ G502.webp');
+        background-size: contain;
+        object-fit: scale-down;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    
+        &.mousepad{
+        background-image: url('75\ lei\ Mousepad\ gaming\ Harta\ Lumii.webp');
+        background-size: contain;
+        object-fit: scale-down;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    
+        &.placivideo{
+        background-image: url('8700\ lei\ Placa\ video\ ASUS\ GeForce\ RTX®\ 4080\ TUF\ GAMING\,\ 16GB\ GDDR6X\,\ 256-bit.webp');
+        background-size: contain;
+        object-fit: scale-down;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    
+        &.tastaturi{
+        background-image: url('Tastatura\ gaming\ mecanica\ A+\ Kago\,.jpg');
+        background-size: contain;
+        object-fit: scale-down;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    
+        &.procesoare{
+        background-image: url('1050\ lei\ Procesor\ Intel\ CPU\ Desktop\ Core\ i5-13400F\,\ 2.5GHz.png');
+        background-size: contain;
+        object-fit: scale-down;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+ 
+}
+
+
+h2{
+    color: rgb(221, 148, 14);
+}

@@ -1,6 +1,6 @@
 .logo{
-    width: 92px;
-    height: 92px;
+    width: 80px;
+    height: 80px;
 }
 
 .header{
@@ -45,4 +45,10 @@
 
  .navbar-nav{
     align-items: center;
+    gap: .5rem;
+ }
+
+ .navbar-toggler{
+    background-color: #e38808;
+    border-radius: 1rem;
  }

@@ -36,6 +36,7 @@ export default function Location() {
 								lng: 25.583461,
 							}}
 							defaultZoom={11}
+							 
 						>
 							<Marker lat={45.708667} lng={25.607192} />
 						</GoogleMap>

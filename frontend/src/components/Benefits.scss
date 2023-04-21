@@ -5,6 +5,8 @@
     justify-content:space-between;
     align-items: center;
     padding: 2rem 4rem;
+    background-color: rgb(42, 42, 42);
+    border-radius: 1rem 1rem 0 0;
 }
 
 .benefits-p{
@@ -12,7 +14,11 @@
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: rgb(75, 5, 119);
+    border-radius: 0 0 1rem 1rem;
     padding: 0 0rem 1rem 4rem;
+    margin-bottom: 10rem;
     & p{
         max-width: 200px;
     }
