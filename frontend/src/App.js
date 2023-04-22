@@ -118,6 +118,7 @@ const router = createBrowserRouter([
 		path: "/categories",
 		element: <CategoriesScreen />,
 	},
+
 ]);
 
 function App() {

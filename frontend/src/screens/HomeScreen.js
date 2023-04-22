@@ -16,7 +16,8 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
 
   const productList = useSelector(state => state.productList)
-  const {loading, error, products} = productList;
+  let {loading, error, products} = productList;
+ 
   // UseEffect pentru call catre Backend
   useEffect(()=>{
     dispatch(listProducts())
