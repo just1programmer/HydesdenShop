@@ -6,7 +6,7 @@ const router = express.Router();
 // Aducem modelul User
 const Order = require("../models/orderModel");
 const protect = require("../middleware/authMiddleware");
-
+const Product = require("../models/productModel");
 
 
 //  @description Crearea unei noi comenzi
@@ -15,6 +15,18 @@ const protect = require("../middleware/authMiddleware");
 router.post("/",protect.protect, asyncHandler(async (req, res) => {
 
 const {orderItems,shippingAddress,paymentMethod,itemsPrice,taxPrice,shippingPrice,totalPrice} = req.body
+ 
+
+// vreau sa iau IDul la produse . fac un foreach pt fiecare order Item facem un find de produs,modificam  countInStock - qty. si salvam in DB
+// Incercam sa scadem countinstockul ...
+orderItems.forEach( async (produs) => {
+		console.log(produs)
+		const product = await Product.findById(produs.product)
+		 if(product){
+    	product.countInStock = product.countInStock - produs.qty;
+    	const updatedProduct = await product.save();
+}});
+
 
 if(orderItems && orderItems.length ===0){
     res.status(400)

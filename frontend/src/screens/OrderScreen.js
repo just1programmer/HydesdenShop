@@ -174,7 +174,7 @@ const OrderScreen = () => {
 													</LinkContainer>
 												</Col>
 												<Col md={4} style={{fontFamily:'Reggae One',fontSize:'small'}} className='text-end'>
-													{item.qty} x Lei {item.price} = Lei {item.qty * item.price}
+													{item.qty} x Lei {item.price} = Lei {Number(item.qty * item.price).toFixed(2)}
 												</Col>
 											</Row>
 										</ListGroup.Item>

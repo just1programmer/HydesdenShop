@@ -45,9 +45,12 @@ main {
    text-decoration: none;
    font-weight: bold;
   font-family: 'Reggae One', cursive;
-
+transition: all .5s ease;
  }
 
+ a:hover{
+  transform: scale(1.1);
+ }
 
 
  a:visited{

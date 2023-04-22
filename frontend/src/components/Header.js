@@ -30,8 +30,14 @@ const Header = () => {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ms-auto">
+							<a className="links contact" href="/home">
+								<span>Acasa</span>
+							</a>
 							<a className="links contact" href="/categories">
-								 <span>Categorii</span>
+								<span>Categorii</span>
+							</a>
+							<a className="links contact" href="/benefits">
+								<span>Beneficii</span>
 							</a>
 							<a className="links contact" href="#contact">
 								<i className="fas fa-envelope"></i> <span>Contact</span>
