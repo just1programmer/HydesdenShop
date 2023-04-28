@@ -27,6 +27,7 @@ const Header = () => {
 					<Navbar.Brand href="/">
 						<img src={logo} alt="" className="logo" />
 					</Navbar.Brand>
+					<h1>Hyde's Den</h1>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ms-auto">

@@ -25,6 +25,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 
 const router = createBrowserRouter([
 	{
+		// de pus /home cand avem split screen selection
 		path: "/home",
 		element: <HomeScreen />,
 	},
@@ -139,6 +140,9 @@ function App() {
 					<Footer />
 				</>
 			)}
+		
+				
+		
 		</>
 	);
 }

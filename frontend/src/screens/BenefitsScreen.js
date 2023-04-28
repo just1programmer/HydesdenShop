@@ -1,13 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './BenefitsScreen.scss' 
 const BenefitsScreen = () => {
+
+	const [openTransportBenefit ,setOpenTransportBenefit] =  useState(false)
+		const [openReturnBenefit, setOpenReturnBenefit] = useState(false);
+			const [openDifferenceBenefit, setOpenDifferenceBenefit] = useState(false);
+				const [openWarrantyBenefit, setOpenWarrantyBenefit] = useState(false);
+
+
+	// Asta deschide dropwdownu de la beneficii in functie de ce URL avem in Browser
+	useEffect(() => {
+		if (window.location.href === "http://localhost:3000/benefits#transport") {
+			setOpenTransportBenefit(true);
+		}
+
+		if (window.location.href === "http://localhost:3000/benefits#return") {
+			setOpenReturnBenefit(true);
+		}
+
+		if (window.location.href === "http://localhost:3000/benefits#difference") {
+			setOpenDifferenceBenefit(true);
+		}
+
+		if (window.location.href === "http://localhost:3000/benefits#warranty") {
+			setOpenWarrantyBenefit(true);
+		}
+	}, [
+		openTransportBenefit,
+		openReturnBenefit,
+		openDifferenceBenefit,
+		openWarrantyBenefit,
+	]);
+
+
   return (
 		<div>
 			<div className="beneficii">
 				<h1>Beneficii</h1>
 			</div>
-			<details>
-				<summary>Transport la orice produs</summary>
+			<details open={openTransportBenefit}>
+				<summary id="transport">Transport la orice produs</summary>
 				<p>
 					<p>
 						{" "}
@@ -89,7 +121,7 @@ const BenefitsScreen = () => {
 					</p>
 				</p>
 			</details>
-			<details>
+			<details open={openReturnBenefit}>
 				<summary>Returnarea produselor</summary>
 				<p>
 					<p>
@@ -136,7 +168,7 @@ const BenefitsScreen = () => {
 					</p>
 				</p>
 			</details>
-			<details>
+			<details open={openDifferenceBenefit}>
 				<summary>De 2 ori diferenta!</summary>
 				<p>
 					<p>
@@ -215,7 +247,7 @@ const BenefitsScreen = () => {
 					</p>
 				</p>
 			</details>
-			<details>
+			<details open={openWarrantyBenefit}>
 				<summary>Extragarantie</summary>
 				<p>
 					<p>

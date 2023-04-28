@@ -56,11 +56,12 @@ const Footer = () => {
 					</div>
 				</Row>
 
-				<Nav.Link href="#header">
+				<a href="#">
 					<Button className="gototop">
+						{" "}
 						<i className="fas fa-arrow-up" style={{ color: "white" }}></i>
 					</Button>
-				</Nav.Link>
+				</a>
 			</Container>
 		</footer>
 	);
