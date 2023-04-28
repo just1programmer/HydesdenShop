@@ -10,15 +10,24 @@ const OrderListScreen = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
+	function compareCreatedAt(a, b) {
+		return b.createdAt - a.createdAt;
+	}
+
 	const orderList = useSelector((state) => state.orderList);
 	const { orders, loading, error } = orderList;
 
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
- 
+
+	if(orders){
+	orders.reverse();
+	}
+
 	useEffect(() => {
 		if (userInfo && userInfo.isAdmin) {
 			dispatch(listOrders());
+		
 		} else {
 			navigate("/login");
 		}
@@ -32,13 +41,7 @@ const OrderListScreen = () => {
 			) : error ? (
 				<Message variant="danger">{error}</Message>
 			) : (
-				<Table
-					variant="dark"
-					bordered
-					hovered
-					responsive
-					className="table-sm"
-				>
+				<Table variant="dark" bordered hovered responsive className="table-sm">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -47,11 +50,11 @@ const OrderListScreen = () => {
 							<th>PRET</th>
 							<th>PLATIT</th>
 							<th>EXPEDIAT</th>
-                            <th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						{orders.map((order) => (
+						{orders.sort(compareCreatedAt).map((order) => (
 							<tr key={order._id}>
 								<td>{order._id}</td>
 								<td>{order.user && order.user.name}</td>
@@ -66,7 +69,7 @@ const OrderListScreen = () => {
 								</td>
 								<td>
 									{order.isDelivered ? (
-										order.deliveredAt.substring(0,10)
+										order.deliveredAt.substring(0, 10)
 									) : (
 										<i className="fas fa-times" style={{ color: "red" }}></i>
 									)}
@@ -77,7 +80,6 @@ const OrderListScreen = () => {
 											Detalii
 										</Button>
 									</Link>
-							 
 								</td>
 							</tr>
 						))}

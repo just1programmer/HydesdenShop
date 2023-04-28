@@ -34,7 +34,7 @@ let { id } = useParams();
 const navigate = useNavigate();
 
 useEffect(() => {
-  
+	window.scrollTo(0, 0);
 	if(successProductReview){
 		setRating(0)
 		setComment('')

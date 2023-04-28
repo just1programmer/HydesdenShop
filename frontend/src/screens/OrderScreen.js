@@ -126,7 +126,11 @@ const OrderScreen = () => {
 
 							{order.isDelivered ? (
 								<Message variant="success">
-									Expediata la data de : {order.deliveredAt}
+									Expediata la data de :{" "}
+									{order.deliveredAt
+										.substring(0, 19)
+										.replace("T", " ")
+										.replace("Z", " ")}
 								</Message>
 							) : (
 								<Message variant="danger">
@@ -142,11 +146,15 @@ const OrderScreen = () => {
 							</p>
 							{order.isPaid ? (
 								<Message variant="success">
-									Platita la data de : {order.paidAt.substring(0,19).replace('T',' ').replace('Z',' ')}
+									Platita la data de :{" "}
+									{order.paidAt
+										.substring(0, 19)
+										.replace("T", " ")
+										.replace("Z", " ")}
 								</Message>
 							) : (
 								<Message variant="danger">
-									Comanda nu a fost inca platita 
+									Comanda nu a fost inca platita
 								</Message>
 							)}
 						</ListGroup.Item>
@@ -173,8 +181,16 @@ const OrderScreen = () => {
 														<NavLink>{item.name}</NavLink>
 													</LinkContainer>
 												</Col>
-												<Col md={4} style={{fontFamily:'Reggae One',fontSize:'small'}} className='text-end'>
-													{item.qty} x Lei {item.price} = Lei {Number(item.qty * item.price).toFixed(2)}
+												<Col
+													md={4}
+													style={{
+														fontFamily: "Reggae One",
+														fontSize: "small",
+													}}
+													className="text-end"
+												>
+													{item.qty} x Lei {item.price} = Lei{" "}
+													{Number(item.qty * item.price).toFixed(2)}
 												</Col>
 											</Row>
 										</ListGroup.Item>
@@ -214,16 +230,34 @@ const OrderScreen = () => {
 									<Col>Lei {Number(order.totalPrice).toFixed(2)}</Col>
 								</Row>
 							</ListGroup.Item>
-							{!order.isPaid && (<ListGroup.Item>
-								{loadingPay && <Loader/>}
-								{!sdkReady ? <Loader/> : (
-									<PayPalButton amount={Number(order.totalPrice*leiToeuroRate).toFixed(2)}  onSuccess={successPaymentHandler} currency='EUR'/>
-								)}
-							</ListGroup.Item>)}
-							{loadingDeliver && <Loader/>}
-							{userInfo.isAdmin && order.isPaid && !order.isDelivered && (<ListGroup.Item>
-								<Button type="button" className="btn btn-block" onClick={deliverHandler}>Marcheaza ca Expediat</Button>
-							</ListGroup.Item>)}
+							{!order.isPaid && (
+								<ListGroup.Item>
+									{loadingPay && <Loader />}
+									{!sdkReady ? (
+										<Loader />
+									) : (
+										<PayPalButton
+											amount={Number(order.totalPrice * leiToeuroRate).toFixed(
+												2
+											)}
+											onSuccess={successPaymentHandler}
+											currency="EUR"
+										/>
+									)}
+								</ListGroup.Item>
+							)}
+							{loadingDeliver && <Loader />}
+							{userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+								<ListGroup.Item>
+									<Button
+										type="button"
+										className="btn btn-block"
+										onClick={deliverHandler}
+									>
+										Marcheaza ca Expediat
+									</Button>
+								</ListGroup.Item>
+							)}
 						</ListGroup>
 					</Card>
 				</Col>
