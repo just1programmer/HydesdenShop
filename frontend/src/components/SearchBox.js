@@ -10,7 +10,7 @@ const SearchBox = () => {
         if(keyword.trim()){
             navigate(`/search/${keyword}`)
         }else{
-            navigate(`/home`)
+            navigate(`/`)
         }
     }
 

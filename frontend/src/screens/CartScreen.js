@@ -56,12 +56,12 @@ const CartScreen = () => {
 		<Row className="cart-order">
 			<Col md={12}>
 				<h1 style={{ color: "black" }}>Coș de cumpărături</h1>
-				<Link className="btn btn-light my-3 btn-reggaefont" to="/home">
+				<Link className="btn btn-light my-3 btn-reggaefont" to="/">
 					Mergi la pagina principală
 				</Link>
 				{cartItems.length === 0 ? (
 					<Message>
-						Cosul tau este gol <Link to="/home">Du-te inapoi</Link>
+						Cosul tau este gol <Link to="/">Du-te inapoi</Link>
 					</Message>
 				) : (
 					<ListGroup variant="flush">

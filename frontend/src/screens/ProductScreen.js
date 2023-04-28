@@ -74,7 +74,7 @@ const addToCartHandler = () => {
 
   return (
 		<>
-			<Link className="btn dark-btn my-3" to="/home">
+			<Link className="btn dark-btn my-3" to="/">
 				<span> Go Back</span>
 			</Link>
 			{loading ? (

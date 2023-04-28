@@ -33,7 +33,7 @@ const SplitScreenSelection = () => {
 					<div className="goto">
 						<h1>
 							{" "}
-							<a href="/home" className="selection-link">
+							<a href="/" className="selection-link">
 								Spre Magazin
 							</a>
 						</h1>

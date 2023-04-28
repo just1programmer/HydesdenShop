@@ -26,7 +26,7 @@ import CategoriesScreen from './screens/CategoriesScreen';
 const router = createBrowserRouter([
 	{
 		// de pus /home cand avem split screen selection
-		path: "/home",
+		path: "/",
 		element: <HomeScreen />,
 	},
 
@@ -127,9 +127,9 @@ function App() {
 	
   return (
 		<>
-			{window.location.href === "http://localhost:3000/" ? (
+			{/* {window.location.href === "http://localhost:3000/" ? (
 				<SplitScreenSelection />
-			) : (
+			) : ( */}
 				<>
 					<Header />
 					<main className="py-3">
@@ -139,7 +139,7 @@ function App() {
 					</main>
 					<Footer />
 				</>
-			)}
+			{/* )} */}
 		
 				
 		
