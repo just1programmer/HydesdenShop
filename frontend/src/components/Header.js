@@ -7,17 +7,18 @@ import {NavDropdown} from 'react-bootstrap'
 import {logout} from '../actions/userActions'
 import logo from './Logoz.png'
 import "./Header.scss"
+import { useNavigate } from 'react-router-dom';
  
 
 const Header = () => {
   const dispatch = useDispatch();
- 
+  const navigate = useNavigate();
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
  
   const logoutHandler = () =>{
 	dispatch(logout())
- 
+	navigate('/')
   }
 
   return (
