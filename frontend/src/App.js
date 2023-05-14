@@ -1,5 +1,5 @@
 import {Container} from 'react-bootstrap'
-import { createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
+import { BrowserRouter, createBrowserRouter, RouterProvider, useLocation } from "react-router-dom";
 import SplitScreenSelection from './screens/SplitScreenSelection';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -130,19 +130,18 @@ function App() {
 			{/* {window.location.href === "http://localhost:3000/" ? (
 				<SplitScreenSelection />
 			) : ( */}
-				<>
+			<>
+				<BrowserRouter>
 					<Header />
-					<main className="py-3">
-						<Container id="header">
-							<RouterProvider router={router} />
-						</Container>
-					</main>
-					<Footer />
-				</>
+				</BrowserRouter>
+				<main className="py-3">
+					<Container id="header">
+						<RouterProvider router={router} />
+					</Container>
+				</main>
+				<Footer />
+			</>
 			{/* )} */}
-		
-				
-		
 		</>
 	);
 }

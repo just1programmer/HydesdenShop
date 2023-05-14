@@ -102,7 +102,7 @@ const StatisticsScreen = () => {
   return (
 		<div>
 			<Row>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 							Produse categoria Casti:
@@ -110,7 +110,7 @@ const StatisticsScreen = () => {
 						</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 							Produse categoria Procesoare:{" "}
@@ -118,7 +118,7 @@ const StatisticsScreen = () => {
 						</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 							Produse categoria Monitoare:{" "}
@@ -126,7 +126,7 @@ const StatisticsScreen = () => {
 						</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 							Produse categoria Mouseuri:{" "}
@@ -134,7 +134,7 @@ const StatisticsScreen = () => {
 						</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 							Produse categoria Placi Video:{" "}
@@ -142,7 +142,7 @@ const StatisticsScreen = () => {
 						</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 						  Produse categoria Mousepaduri:{" "}
@@ -150,7 +150,7 @@ const StatisticsScreen = () => {
 						</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 							Produse categoria Tastaturi:{" "}
@@ -158,22 +158,22 @@ const StatisticsScreen = () => {
 						</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>Total produse : {loading ? "" : products.length}</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>Total useri : {loadingUsers ? "" : users.length}</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>Total comenzi : {loadingOrders ? "" : orders.length}</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 							Produse in afara stockului :{" "}
@@ -181,7 +181,7 @@ const StatisticsScreen = () => {
 						</p>
 					</div>
 				</Col>
-				<Col sm={12} md={4}>
+				<Col sm={12} md={12}>
 					<div className="statistic">
 						<p>
 							Produse totale in stock : {loading ? "" : produseInStock.length}

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import FormContainer from "../components/FormContainer";
+import './ProductEditScreen.scss'
 import { listProductDetails, updateProduct } from "../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
@@ -167,17 +168,27 @@ const ProductEditScreen = ({ match, history }) => {
 						<Form.Group controlId="category">
 							<Form.Label>Category</Form.Label>
 							<Form.Control
-								type="text"
+								as="select"
+								className="custom-select"
 								placeholder="Enter category"
 								value={category}
 								onChange={(e) => setCategory(e.target.value)}
-							></Form.Control>
+							>
+								<option>Casti</option>
+								<option>Mouseuri</option>
+								<option>Procesoare</option>
+								<option value="PlaciVideo">Placi Video</option>
+								<option>Tastaturi</option>
+								<option>Monitoare</option>
+								<option>Mousepaduri</option>
+								<option>Altele</option>
+							</Form.Control>
 						</Form.Group>
 
 						<Form.Group controlId="description">
 							<Form.Label>Description</Form.Label>
 							<Form.Control
-								as='textarea'
+								as="textarea"
 								type="text"
 								placeholder="Enter description"
 								value={description}
